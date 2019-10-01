@@ -1,0 +1,237 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% CS484 Written Question Template
+%
+% This is a LaTeX document. LaTeX is a markup language for producing 
+% documents. Your task is to fill out this document, then to compile 
+% it into a PDF document. 
+%
+% 
+% TO COMPILE:
+% > pdflatex thisfile.tex
+%
+% If you do not have LaTeX and need a LaTeX distribution:
+% - Personal laptops (all common OS): www.latex-project.org/get/
+% - We recommend miktex (https://miktex.org/) for latex engine,
+%   and TeXstudio(http://www.texstudio.org/) for latex editor.
+%   You should install both programs for editing latex.
+%   Or you can use Overleaf (https://www.overleaf.com/) which is 
+%   an online latex editor.
+%
+% If you need help with LaTeX, please come to office hours. 
+% Or, there is plenty of help online:
+% https://en.wikibooks.org/wiki/LaTeX
+%
+% Good luck!
+% Min and the CS484 staff
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue]{hyperref}
+\usepackage[a4paper,margin=1.5in]{geometry}
+\usepackage{stackengine,graphicx}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+\usepackage{microtype}
+\usepackage{times}
+
+% From https://ctan.org/pkg/matlab-prettifier
+\usepackage[numbered,framed]{matlab-prettifier}
+
+\frenchspacing
+\setlength{\parindent}{0cm} % Default is 15pt.
+\setlength{\parskip}{0.3cm plus1mm minus1mm}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Homework 1 Questions}
+\rhead{CS484}
+\rfoot{\thepage}
+
+\date{}
+
+\title{\vspace{-1cm}Homework 1 Questions}
+
+
+\begin{document}
+\maketitle
+\vspace{-2cm}
+\thispagestyle{fancy}
+
+\section*{Instructions}
+\begin{itemize}
+  \item Compile and read through the included MATLAB tutorial.
+  \item 2 questions.
+  \item Include code.
+  \item Feel free to include images or equations.
+  \item Please make this document anonymous.
+  \item \textbf{Please use only the space provided and keep the page breaks.} Please do not make new pages, nor remove pages. The document is a template to help grading.
+  \item If you really need extra space, please use new pages at the end of the document and refer us to it in your answers.
+\end{itemize}
+
+
+\section*{Submission}
+\begin{itemize}
+	\item Please zip your folder with \textbf{hw1\_student id\_name.zip} $($ex: hw1\_20191234\_Peter.zip$)$
+	\item Submit your homework to \href{http://klms.kaist.ac.kr/course/view.php?id=109597}{KLMS}.
+	\item An assignment after its original due date will be degraded from the marked credit per day: e.g., A will be downgraded to B for one-day delayed submission.
+\end{itemize}
+
+\pagebreak
+
+
+\section*{Questions}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Please leave the pagebreak
+\paragraph{Q1:} We wish to set all pixels that have a brightness of 10 or less to 0, to remove sensor noise. However, our code is slow when run on a database with 1000 grayscale images.
+
+\emph{Image:} \href{grizzlypeakg.png}{grizzlypeakg.png}
+
+\begin{lstlisting}[style=Matlab-editor]
+A = imread('grizzlypeakg.png');
+[m1,n1] = size( A );
+for i=1:m1
+    for j=1:n1
+        if A(i,j) <= 10
+            A(i,j) = 0;
+        end
+    end
+end
+\end{lstlisting}
+
+\paragraph{Q1.1:} How could we speed it up?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{A1.1:} We can speed up this sensor noise removal process by creating a binary logical array, B, instead of running a double loop of A. By running B = A $\le$ 10, B's elements will either be 0 or 1, depending on whether the pixel at corresponding indices of A is less than 10. Then, we can run A(B) = 0 to switch all pixels lower than 10 to 0. \\
+
+\begin{lstlisting}[style=Matlab-editor]
+A = imread('grizzlypeakg.png');
+B = A <= 10;
+A(B) = 0;
+imshow(A)
+\end{lstlisting}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Please leave the pagebreak
+\pagebreak
+\paragraph{Q1.2:} What factor speedup would we receive over 1000 images? Please measure it.
+
+Ignore file loading; assume all images are equal resolution; don't assume that the time taken for one image $\times1000$ will equal $1000$ image computations, as single short tasks on multitasking computers often take variable time.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{A1.2:} In order to measure time it takes for the previous and revised versions of sensor removal, I ran two .m files, each containing previous and revised version, 1000 times using a for loop in a separate .m file. \\
+As a result, the original method of using a double loop took $55.479265$ seconds, and the revised method using a binary logical array took $41.968613$ seconds. Thus, the factor speedup is $55.479265/41.968613 = \framebox{1.3219228}$. \\
+
+Running original algorithm 1000 times:
+\begin{lstlisting} [style=Matlab-editor]
+tic;
+for i1 = 1:1000
+    Q1_1_original
+end
+toc;
+\end{lstlisting}
+
+Running revised algorithm 1000 times:
+\begin{lstlisting} [style=Matlab-editor]
+tic;
+for i1 = 1:1000
+    Q1_1_revised
+end
+toc;
+\end{lstlisting}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Please leave the pagebreak
+\pagebreak
+\paragraph{Q1.3:} How might a speeded-up version change for color images? Please measure it.
+
+\emph{Image:} \href{grizzlypeak.jpg}{grizzlypeak.jpg}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{A1.3:} When run single time, the original method took $8.268699$ seconds, and the revised method took $0.107157$ second. The gap between the two execution times using colored picture is much greater than the one using previous picture - with the speedup factor of about $77.164338$. This might be so because the original method loops around a lot more pixels consisting of red, green, and blue componenets, whereas the revised method finds pixels less than 10 using a logical binary array without the need to loop through the picture's pixels.
+
+Original algorithm:
+\begin{lstlisting} [style=Matlab-editor]
+tic;
+A = imread('grizzlypeak.jpg');
+[m1, n1] = size(A);
+for i = 1: m1
+    for j = 1 : n1
+        if A(i, j) <= 10
+            A(i, j) = 0;
+        end
+    end
+end
+toc;
+imshow(A) 
+\end{lstlisting}
+
+Revised algorithm:
+\begin{lstlisting} [style=Matlab-editor]
+tic;
+A = imread('grizzlypeak.jpg');
+B = A <= 10;
+A(B) = 0;
+toc;
+imshow(A)
+\end{lstlisting}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Please leave the pagebreak
+\pagebreak
+\paragraph{Q2:} We wish to reduce the brightness of an image but, when trying to visualize the result, all we sees is white with some weird ``corruption'' of color patches.
+
+\emph{Image:} \href{gigi.jpg}{gigi.jpg}
+
+\begin{lstlisting}[style=Matlab-editor]
+I = double( imread('gigi.jpg') );
+I = I - 20;
+imshow( I );
+\end{lstlisting}
+
+\paragraph{Q2.1:} What is incorrect with this approach? How can it be fixed while maintaining the same amount of brightness reduction?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{A2.1:} \mbox{} \\
+1) In double form, all numbers that exceed 1.0 are considered as 1. Therefore, all pixels that exceed 1 have the same brightness - white. We can fix this problem by normalizing pixels to lie between 0 and 1.0. I did so by changing double to im2double. \\
+2) To reduce the brightness, the original code subtracts 20 from all elements of I. However, the elements are now normalized to lie between 0 and 1.0. Therefore, to reduce the brightness by same amount, we need to reduce pixels by 20/255, not 20.
+
+\begin{lstlisting} [style=Matlab-editor]
+I = im2double( imread('gigi.jpg') );
+I = I - 20/255;
+imshow( I );
+\end{lstlisting}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Please leave the pagebreak
+\pagebreak
+\paragraph{Q2.2:} Where did the original corruption come from? Which specific values in the original image did it represent?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{A2.2:} When run with original method, the result showed a white picture with some yellowish patches - corruption. When the image is in double form, it considers all pixels higher than 1.0 as 1 - the maximum brightness - and prints them as a white pixel. Thus, yellowish patches represent pixels that are lower than 1.0.
+
+\emph{Fixed image:} \href{fixedgigi.jpg}{fixedgigi.jpg}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

@@ -1,0 +1,253 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% CS484 Written Question Template
+%
+% Acknowledgements:
+% The original code is written by Prof. James Tompkin (james_tompkin@brown.edu).
+% The second version is revised by Prof. Min H. Kim (minhkim@kaist.ac.kr).
+%
+% This is a LaTeX document. LaTeX is a markup language for producing 
+% documents. Your task is to fill out this document, then to compile 
+% it into a PDF document. 
+%
+% 
+% TO COMPILE:
+% > pdflatex thisfile.tex
+%
+% If you do not have LaTeX and need a LaTeX distribution:
+% - Personal laptops (all common OS): www.latex-project.org/get/
+% - We recommend latex compiler miktex (https://miktex.org/) for windows,
+%   macTex (http://www.tug.org/mactex/) for macOS users.
+%   And TeXstudio(http://www.texstudio.org/) for latex editor.
+%   You should install both compiler and editor for editing latex.
+%   The another option is Overleaf (https://www.overleaf.com/) which is 
+%   an online latex editor.
+%
+% If you need help with LaTeX, please come to office hours. 
+% Or, there is plenty of help online:
+% https://en.wikibooks.org/wiki/LaTeX
+%
+% Good luck!
+% Min and the CS484 staff
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% How to include two graphics on the same line:
+% 
+% \includegraphics[width=0.49\linewidth]{yourgraphic1.png}
+% \includegraphics[width=0.49\linewidth]{yourgraphic2.png}
+%
+% How to include equations:
+%
+% \begin{equation}
+% y = mx+c
+% \end{equation}
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[colorlinks = true,
+linkcolor = blue,
+urlcolor  = blue]{hyperref}
+\usepackage[a4paper,margin=1.5in]{geometry}
+\usepackage{stackengine,graphicx}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+\usepackage{microtype}
+\usepackage{times}
+\usepackage{amsmath}
+
+% From https://ctan.org/pkg/matlab-prettifier
+\usepackage[numbered,framed]{matlab-prettifier}
+
+\frenchspacing
+\setlength{\parindent}{0cm} % Default is 15pt.
+\setlength{\parskip}{0.3cm plus1mm minus1mm}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Homework 2 Questions}
+\rhead{CS484}
+\rfoot{\thepage}
+
+\date{}
+
+\title{\vspace{-1cm}Homework 2 Questions}
+
+
+\begin{document}
+	\maketitle
+	\vspace{-3cm}
+	\thispagestyle{fancy}
+	
+	\section*{Instructions}
+	\begin{itemize}
+		\item 4 questions.
+		\item Write code where appropriate.
+		\item Feel free to include images or equations.
+		\item Please make this document anonymous.
+		\item \textbf{Please use only the space provided and keep the page breaks.} Please do not make new pages, nor remove pages. The document is a template to help grading.
+		\item If you really need extra space, please use new pages at the end of the document and refer us to it in your answers.
+	\end{itemize}
+
+	\section*{Questions}
+	
+	\paragraph{Q1:} Explicitly describe image convolution: the input, the transformation, and the output. Why is it useful for computer vision?
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\paragraph{A1:} \mbox{} \\
+	Convolution is used in image processing to apply a filter to an image and produce a desired output image. The output is simply a matrix of values, or pixel values, that are linear combinations of input pixel values. The transformation matrix is used to form linear combinations of input pixel values. \\
+	This is useful for computer vision because it can be used in image processing - blurring, sharpening, edge detecting, and so on. It gives us ability to manipulate pixel information and thus the image itself. 
+	
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	% Please leave the pagebreak
+	\pagebreak
+	\paragraph{Q2:} What is the difference between convolution and correlation? Construct a scenario which produces a different output between both operations.
+	
+	\emph{Please use \href{https://www.mathworks.com/help/images/ref/imfilter.html}{$imfilter$} to experiment! Look at the `options' parameter in MATLAB Help to learn how to switch the underlying operation from correlation to convolution.}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\paragraph{A2:} \mbox{} \\
+	Convolution and correlation both are filtering techniques used to produce output pixels that depend on neighboring input pixels. Convolution, however, uses a filter that has been rotated by 180 degrees from the one used by correlation. Also, convolution is interested in obtaining an output image from an input image and transformation information, whereas correlation is interested in determining the similarities between input information and target information.
+	
+	Code:
+	\begin{lstlisting} [style=Matlab-editor]
+kernel = [8 1 6; 3 5 7; 4 9 2];
+image = zeros(5);
+image(:) = 1:25;
+	
+corr_output = imfilter(image, kernel);
+conv_output = imfilter(image, kernel, 'conv');
+conv_output
+corr_output
+	\end{lstlisting}
+	
+	Convolution output:
+	\begin{lstlisting} [style=Matlab-editor]
+conv_output =
+
+81   185   335   485   341
+131   315   540   765   581
+161   360   585   810   611
+191   405   630   855   641
+127   275   425   575   519
+	\end{lstlisting}
+	
+	Correlation output:
+	\begin{lstlisting} [style=Matlab-editor]
+corr_output =
+
+79   205   355   505   419
+139   315   540   765   589
+169   360   585   810   619
+199   405   630   855   649
+153   295   445   595   361
+	\end{lstlisting}
+	
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	% Please leave the pagebreak
+	\pagebreak
+	\paragraph{Q3:} What is the difference between a high pass filter and a low pass filter in how they are constructed, and what they do to the image? Please provide example kernels and output images.
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\paragraph{A3:} \mbox{} \\
+	High pass filter is constructed by making sum of all values in the filter 0. In high pass filter, values can be either positive, negative, or 0. Most high pass filters are consisted of a single positive value at the center surrounded by negative values. High pass filter tends to retain high frequency information while reducing low frequency information, thus sharpening the image. It does so by increasing brightness of center pixel relative to neighboring pixels. It also amplifies noise. 
+	\\
+	
+	Low pass filter is constructed by making sum of all values in the filter 1. In low pass filter, values are positive or 0. Most low pass filters are constructed to decrease the disparity between neighboring pixel values. Low pass filter tends to retain low frequency information while reducing high frequency information, thus blurring the image. It does so by smoothing the image, or making the neighboring pixels closer to each other. It also smoothes out noise.
+	\\
+	
+	Example high pass filter: 
+	$ \begin{bmatrix}
+	-1 & -1 & -1 \\
+	-1 & 8 & -1 \\
+	-1 & -1 & -1
+	\end{bmatrix} $
+	\\
+	
+	Example low pass filter: 
+	$ \begin{bmatrix}
+	1/9 & 1/9 & 1/9 \\
+	1/9 & 1/9 & 1/9 \\
+	1/9 & 1/9 & 1/9
+	\end{bmatrix} $
+	\\
+	
+	Code:
+	\begin{lstlisting} [style=Matlab-editor]
+hpf = [-1 -1 -1; -1 8 -1; -1 -1 -1];
+lpf = [1/9 1/9 1/9; 1/9 1/9 1/9; 1/9 1/9 1/9];
+
+image = imread('RISDance.jpg');
+HPF = imfilter(image, hpf, 'same');
+LPF = imfilter(image, lpf, 'same');
+imwrite(HPF, 'HPF.jpg');
+imwrite(LPF, 'LPF.jpg');
+	\end{lstlisting}
+	
+	\emph{Input image:} \href{RISDance.jpg}{RISDance.jpg} \\
+	\emph{High pass filtered image:} \href{HPF.jpg}{HPF.jpg} \\
+	\emph{Low pass filtered image:} \href{LPF.jpg}{LPF.jpg}
+	
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	% Please leave the pagebreak
+	\pagebreak
+	\paragraph{Q4:} How does computation time vary with filter sizes from $3\times3$ to $15\times15$ (for all odd and square sizes), and with image sizes from 0.25~MPix to 8~MPix (choose your own intervals)? Measure both using \href{https://www.mathworks.com/help/images/ref/imfilter.html}{$imfilter$} to produce a matrix of values. Use the \href{https://www.mathworks.com/help/images/ref/imresize.html}{$imresize$} function to vary the size of an image. Use an appropriate charting function to plot your matrix of results, such as \href{https://www.mathworks.com/help/matlab/ref/scatter3.html}{$scatter3$} or \href{https://www.mathworks.com/help/matlab/ref/surf.html}{$surf$}.
+	
+	Do the results match your expectation given the number of multiply and add operations in convolution?
+	
+	See RISDance.jpg in the attached file.
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\paragraph{A4:} \mbox{} \\
+	Code:
+	\begin{lstlisting} [style=Matlab-editor]
+row = 1;
+col = 1;
+ret = double(zeros(7, 32));
+
+for i1 = 3:2:15 %row
+    col = 1;
+    for i2 = 0.25:0.25:8.0 %col
+        filter = zeros(i1, i1);
+        ratio = (i2 * 1000000) / numel(image);
+        image2 = imresize(image, ratio);
+        tic;
+        result = imfilter(image2, filter);
+        elapsed = toc;
+        ret(row, col) = elapsed;
+        col = col + 1;
+    end
+    row = row + 1;
+end
+surf(ret)
+	\end{lstlisting} 
+	\emph{Computation time chart:} \href{computation.png}{computation.png}
+	
+	My expectation was that it would take longer time to compute convolution if size of image increases or if size of filter increases. Generally, this expectation was correct. However, the rate at which computation time increases was much more faster when size of image increases than when size of filter increases. 
+	
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	
+	% If you really need extra space, uncomment here and use extra pages after the last question.
+	% Please refer here in your original answer. Thanks!
+	%\pagebreak
+	%\paragraph{AX.X Continued:} Your answer continued here.
+	
+	
+	
+\end{document}
