@@ -42,6 +42,12 @@ for i = filter_row + 1:image_size(1) + filter_row
     end
 end 
 
+% for k = 1:image_size(3)
+%     col = im2col(image(:,:,k), [filter_size(1), filter_size(2)]);
+%     filtered_col = filter2 * col;
+%     ret(:,:,k) = col2im(filtered_col, [filter_row, filter_col], [image_size(1), image_size(2)]);
+% end
+% 
 output = ret;
 
 
