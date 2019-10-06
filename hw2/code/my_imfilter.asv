@@ -28,25 +28,31 @@ if rem(filter_size(1), 2) == 0 || rem(filter_size(2), 2) == 0
     error("Error: even-sized filter!");
 end
 
+% filter = rot90(filter, 2);
 filter_row = floor(filter_size(1)/2);
 filter_col = floor(filter_size(2)/2);
 
 image_size = size(image);
 pimage = padarray(image, [filter_row, filter_col]);
 pimage_size = size(pimage);
+% pfilter = padarray(filter, ...
+%     [floor((pimage_size(1) - filter_size(1))/2), ...
+%     floor((pimage_size(2) - filter_size(2))/2)]);
 pfilter = zeros(pimage_size(1), pimage_size(2));
 pfilter(1:filter_size(1), 1:filter_size(2)) = filter;
-ret = zeros(image_size);
+ret = zeros(image_size); 
 
 for k = 1:image_size(3)
     f_image = fft2(pimage(:,:,k));
     f_filter = fft2(pfilter);
     padded_conv = ifft2(f_image .* f_filter);
-    ret(:,:,k) = padded_conv(2 * filter_row + 1 : pimage_size(1), ...
-         2 * filter_col + 1 : pimage_size(2));
+%     ret(:,:,k) = padded_conv(filter_row + 1 : pimage_size(1) - filter_row, ...
+%          filter_col + 1 : pimage_size(2) - filter_col);
+    ret(:,:,k) = padded_conv(1 : pimage_size(1) - filter_row, ...
+         filter_col + 1 : pimage_size(2) - filter_col);
 end 
-
 output = ret;
+
 
 %%%%%%%%%%%%%%%%
 
