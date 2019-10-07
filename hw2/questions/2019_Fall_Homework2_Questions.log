@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.9.22)  1 OCT 2019 10:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.10.6)  6 OCT 2019 15:29
 entering extended mode
 **./2019_Fall_Homework2_Questions.tex
 (2019_Fall_Homework2_Questions.tex
@@ -217,7 +217,7 @@ ways
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/etoolbox\etool
 box.sty"
-Package: etoolbox 2019/09/09 v2.5g e-TeX tools for LaTeX (JAW)
+Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count103
 )
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listofitems\li
@@ -385,6 +385,33 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
 \mathdisplay@stack=\toks23
 LaTeX Info: Redefining \[ on input line 2844.
 LaTeX Info: Redefining \] on input line 2845.
+)
+("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\subcap
+tion.sty"
+Package: subcaption 2019/09/01 v1.3a Sub-captions (AR)
+
+("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\captio
+n.sty"
+Package: caption 2019/09/01 v3.3d Customizing captions (AR)
+
+("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\captio
+n3.sty"
+Package: caption3 2019/09/01 v1.8d caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 64.
+\captionmargin=\dimen130
+\captionmargin@=\dimen131
+\captionwidth=\dimen132
+\caption@tempdima=\dimen133
+\caption@indent=\dimen134
+\caption@parindent=\dimen135
+\caption@hangindent=\dimen136
+)
+\c@caption@flags=\count125
+\c@ContinuedFloat=\count126
+Package caption Info: hyperref package is loaded.
+)
+\c@subfigure=\count127
+\c@subtable=\count128
 )
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/matlab-prettif
 ier\matlab-prettifier.sty"
@@ -572,24 +599,24 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\listi
 ngs.sty"
-\lst@mode=\count125
+\lst@mode=\count129
 \lst@gtempboxa=\box33
 \lst@token=\toks24
-\lst@length=\count126
-\lst@currlwidth=\dimen130
-\lst@column=\count127
-\lst@pos=\count128
-\lst@lostspace=\dimen131
-\lst@width=\dimen132
-\lst@newlines=\count129
-\lst@lineno=\count130
-\lst@maxwidth=\dimen133
+\lst@length=\count130
+\lst@currlwidth=\dimen137
+\lst@column=\count131
+\lst@pos=\count132
+\lst@lostspace=\dimen138
+\lst@width=\dimen139
+\lst@newlines=\count133
+\lst@lineno=\count134
+\lst@maxwidth=\dimen140
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\lstmi
 sc.sty"
 File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
-\c@lstnumber=\count131
-\lst@skipnumbers=\count132
+\c@lstnumber=\count135
+\lst@skipnumbers=\count136
 \lst@framebox=\box34
 )
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\listi
@@ -597,9 +624,9 @@ ngs.cfg"
 File: listings.cfg 2019/09/10 1.8c listings configuration
 ))
 Package: listings 2019/09/10 1.8c (Carsten Heinz)
-\netBracketCount@mlpr=\count133
-\blkLvl@mlpr=\count134
-\blkLvlAtClassdef@mlpr=\count135
+\netBracketCount@mlpr=\count137
+\blkLvl@mlpr=\count138
+\blkLvlAtClassdef@mlpr=\count139
 \emHeight@mlpr=\skip64
 \jayDepth@mlpr=\skip65
 \sectionRuleOffset@mlpr=\skip66
@@ -607,36 +634,36 @@ Package: listings 2019/09/10 1.8c (Carsten Heinz)
 ) (2019_Fall_Homework2_Questions.aux)
 \openout1 = `2019_Fall_Homework2_Questions.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 81.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 81.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 82.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 82.
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ts1cmr.fd
 "
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 81.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 82.
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ot1ptm.
 fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 \AtBeginShipoutBox=\box35
-Package hyperref Info: Link coloring ON on input line 81.
+Package hyperref Info: Link coloring ON on input line 82.
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\namer
 ef.sty"
@@ -646,11 +673,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 titlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count136
+\c@section@level=\count140
 )
-LaTeX Info: Redefining \ref on input line 81.
-LaTeX Info: Redefining \pageref on input line 81.
-LaTeX Info: Redefining \nameref on input line 81.
+LaTeX Info: Redefining \ref on input line 82.
+LaTeX Info: Redefining \pageref on input line 82.
+LaTeX Info: Redefining \nameref on input line 82.
  (2019_Fall_Homework2_Questions.out)
 (2019_Fall_Homework2_Questions.out)
 \@outlinefile=\write3
@@ -695,16 +722,16 @@ LaTeX Info: Redefining \nameref on input line 81.
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\su
 pp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count137
-\scratchdimen=\dimen134
+\scratchcounter=\count141
+\scratchdimen=\dimen141
 \scratchbox=\box36
-\nofMPsegments=\count138
-\nofMParguments=\count139
+\nofMPsegments=\count142
+\nofMParguments=\count143
 \everyMPshowfont=\toks26
-\MPscratchCnt=\count140
-\MPscratchDim=\dimen135
-\MPnumerator=\count141
-\makeMPintoPDFobject=\count142
+\MPscratchCnt=\count144
+\MPscratchDim=\dimen142
+\MPnumerator=\count145
+\makeMPintoPDFobject=\count146
 \everyMPtoPDFconversion=\toks27
 )
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epsto
@@ -722,7 +749,7 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-LaTeX Info: Redefining \microtypecontext on input line 81.
+LaTeX Info: Redefining \microtypecontext on input line 82.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -737,7 +764,10 @@ Package microtype Info: No adjustment of character kerning.
 tm.cfg"
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-\c@lstlisting=\count143
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: listings package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count147
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/microtype\mt-c
 mr.cfg"
@@ -748,19 +778,19 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 LaTeX Warning: No \author given.
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 86.
-LaTeX Font Info:    Try loading font information for TS1+ptm on input line 88.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 87.
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 89.
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ts1ptm.
 fd"
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 92.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 93.
  [1{C:/Users/김우재/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 ]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 120.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 121.
 
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ot1pcr.
@@ -771,7 +801,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `pcr' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for TS1+pcr on input line 126.
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 127.
 
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ts1pcr.
@@ -783,45 +813,52 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
  [2]
-Underfull \hbox (badness 10000) in paragraph at lines 162--165
+<RISDance.jpg, id=49, 3854.4pt x 2168.1pt>
+File: RISDance.jpg Graphic file (type jpg)
+<use RISDance.jpg>
+Package pdftex.def Info: RISDance.jpg  used on input line 193.
+(pdftex.def)             Requested size: 152.27682pt x 85.65059pt.
+<HPF.jpg, id=52, 3854.4pt x 2168.1pt>
+File: HPF.jpg Graphic file (type jpg)
+<use HPF.jpg>
+Package pdftex.def Info: HPF.jpg  used on input line 198.
+(pdftex.def)             Requested size: 152.27682pt x 85.65059pt.
+<LPF.jpg, id=55, 3854.4pt x 2168.1pt>
+File: LPF.jpg Graphic file (type jpg)
+<use LPF.jpg>
+Package pdftex.def Info: LPF.jpg  used on input line 203.
+(pdftex.def)             Requested size: 152.27682pt x 85.65059pt.
 
+Underfull \hbox (badness 10000) in paragraph at lines 192--206
+[]$[]$ $[]$
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 166--168
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 169--176
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 177--184
-
- []
-
-[3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 253.
- [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 253.
+[3 <./RISDance.jpg> <./HPF.jpg> <./LPF.jpg>]
+<computation.png, id=80, 526.96875pt x 395.22656pt>
+File: computation.png Graphic file (type png)
+<use computation.png>
+Package pdftex.def Info: computation.png  used on input line 244.
+(pdftex.def)             Requested size: 212.26881pt x 149.2431pt.
+ [4 <./computation.png (PNG copy)>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 263.
+[5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 263.
  (2019_Fall_Homework2_Questions.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 253.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 253.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 263.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 263.
 Package rerunfilecheck Info: File `2019_Fall_Homework2_Questions.out' has not c
 hanged.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 253.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 263.
  ) 
 Here is how much of TeX's memory you used:
- 11979 strings out of 492895
- 178829 string characters out of 3121867
- 387751 words of memory out of 3000000
- 15611 multiletter control sequences out of 15000+200000
- 20939 words of font info for 84 fonts, out of 3000000 for 9000
+ 13150 strings out of 492895
+ 199947 string characters out of 3121867
+ 409066 words of memory out of 3000000
+ 16755 multiletter control sequences out of 15000+200000
+ 22881 words of font info for 92 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,11n,56p,1008b,1545s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,11n,56p,1008b,1545s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r
 .enc}<C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
 msfonts/cm/cmex10.pfb><C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/fon
@@ -833,9 +870,9 @@ fb><C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/
 utmb8a.pfb><C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/ur
 w/times/utmr8a.pfb><C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on 2019_Fall_Homework2_Questions.pdf (4 pages, 113373 bytes).
+Output written on 2019_Fall_Homework2_Questions.pdf (5 pages, 5392404 bytes).
 PDF statistics:
- 143 PDF objects out of 1000 (max. 8388607)
+ 156 PDF objects out of 1000 (max. 8388607)
  69 named destinations out of 1000 (max. 500000)
- 15873 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 19995 words of extra memory for PDF output out of 20736 (max. 10000000)
 

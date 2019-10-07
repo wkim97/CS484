@@ -10,8 +10,8 @@ function proj1()
 
 %% Setup
 % Read images and convert to floating point format
-image1 = im2single(imread('../data/fish.bmp'));
-image2 = im2single(imread('../data/submarine.bmp'));
+image1 = im2single(imread('../data/dog.bmp'));
+image2 = im2single(imread('../data/cat.bmp'));
 
 % For your write up, there are several additional test cases in 'data'. 
 % Feel free to make your own, too (you'll need to align the images in a 

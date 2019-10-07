@@ -59,6 +59,7 @@ urlcolor  = blue]{hyperref}
 \usepackage{microtype}
 \usepackage{times}
 \usepackage{amsmath}
+\usepackage{subcaption}
 
 % From https://ctan.org/pkg/matlab-prettifier
 \usepackage[numbered,framed]{matlab-prettifier}
@@ -157,23 +158,18 @@ corr_output =
 	% Please leave the pagebreak
 	\pagebreak
 	\paragraph{Q3:} What is the difference between a high pass filter and a low pass filter in how they are constructed, and what they do to the image? Please provide example kernels and output images.
-	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\paragraph{A3:} \mbox{} \\
-	High pass filter is constructed by making sum of all values in the filter 0. In high pass filter, values can be either positive, negative, or 0. Most high pass filters are consisted of a single positive value at the center surrounded by negative values. High pass filter tends to retain high frequency information while reducing low frequency information, thus sharpening the image. It does so by increasing brightness of center pixel relative to neighboring pixels. It also amplifies noise. 
+	High pass filter is constructed by adding up all values to 0. In HPF, values can be either positive, negative, or 0. Most HPFs are consisted of a single positive value at the center surrounded by negative values. HPF tends to retain high frequency information while reducing low frequency information, thus sharpening the image. It does so by increasing brightness of center pixel relative to neighboring pixels. It also amplifies noise. 
 	\\
-	
-	Low pass filter is constructed by making sum of all values in the filter 1. In low pass filter, values are positive or 0. Most low pass filters are constructed to decrease the disparity between neighboring pixel values. Low pass filter tends to retain low frequency information while reducing high frequency information, thus blurring the image. It does so by smoothing the image, or making the neighboring pixels closer to each other. It also smoothes out noise.
+	Low pass filter is constructed by summing up all values in the filter to 1. In LPF, values are positive or 0. Most LPFs decrease the disparity among neighboring pixel values. LPF tends to retain low frequency information while reducing high frequency information, thus blurring the image. It does so by smoothing the image, or making the neighboring pixels closer to each other. It also smoothes out noise.
 	\\
-	
 	Example high pass filter: 
 	$ \begin{bmatrix}
 	-1 & -1 & -1 \\
 	-1 & 8 & -1 \\
 	-1 & -1 & -1
-	\end{bmatrix} $
-	\\
-	
+	\end{bmatrix} $, 
 	Example low pass filter: 
 	$ \begin{bmatrix}
 	1/9 & 1/9 & 1/9 \\
@@ -181,12 +177,10 @@ corr_output =
 	1/9 & 1/9 & 1/9
 	\end{bmatrix} $
 	\\
-	
 	Code:
 	\begin{lstlisting} [style=Matlab-editor]
 hpf = [-1 -1 -1; -1 8 -1; -1 -1 -1];
 lpf = [1/9 1/9 1/9; 1/9 1/9 1/9; 1/9 1/9 1/9];
-
 image = imread('RISDance.jpg');
 HPF = imfilter(image, hpf, 'same');
 LPF = imfilter(image, lpf, 'same');
@@ -194,10 +188,22 @@ imwrite(HPF, 'HPF.jpg');
 imwrite(LPF, 'LPF.jpg');
 	\end{lstlisting}
 	
-	\emph{Input image:} \href{RISDance.jpg}{RISDance.jpg} \\
-	\emph{High pass filtered image:} \href{HPF.jpg}{HPF.jpg} \\
-	\emph{Low pass filtered image:} \href{LPF.jpg}{LPF.jpg}
-	
+	\begin{figure}[!htb]
+		\begin{subfigure}{0.4\textwidth}
+			\includegraphics[width=\textwidth]{RISDance.jpg}
+			\caption{Original picture: \href{RISDance.jpg}{RISDance.jpg}}
+		\end{subfigure}
+		%
+		\begin{subfigure}{0.4\textwidth}
+			\includegraphics[width=\textwidth]{HPF.jpg}
+			\caption{High pass filter: \href{HPF.jpg}{HPF.jpg}}
+		\end{subfigure}
+		%
+		\begin{subfigure}{0.4\textwidth}
+			\includegraphics[width=\textwidth]{LPF.jpg}
+			\caption{Low pass filter: \href{LPF.jpg}{LPF.jpg}}
+		\end{subfigure}
+	\end{figure}	
 	
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -217,7 +223,6 @@ imwrite(LPF, 'LPF.jpg');
 row = 1;
 col = 1;
 ret = double(zeros(7, 32));
-
 for i1 = 3:2:15 %row
     col = 1;
     for i2 = 0.25:0.25:8.0 %col
@@ -226,15 +231,20 @@ for i1 = 3:2:15 %row
         image2 = imresize(image, ratio);
         tic;
         result = imfilter(image2, filter);
-        elapsed = toc;
-        ret(row, col) = elapsed;
+        ret(row, col) = toc;
         col = col + 1;
     end
     row = row + 1;
 end
 surf(ret)
 	\end{lstlisting} 
-	\emph{Computation time chart:} \href{computation.png}{computation.png}
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[trim={1.8cm 1.6cm 1.8cm 1.8cm}, clip, scale=0.5]{computation.png}
+		\caption{Computation time graph: \href{computation.png}{computation.png}}
+	\end{figure}
+	(Answer to Q4 continued on page 5.)
 	
 	My expectation was that it would take longer time to compute convolution if size of image increases or if size of filter increases. Generally, this expectation was correct. However, the rate at which computation time increases was much more faster when size of image increases than when size of filter increases. 
 	

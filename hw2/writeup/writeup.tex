@@ -59,6 +59,9 @@
 \usepackage{microtype}
 \usepackage{times}
 \usepackage{booktabs}
+\usepackage{subcaption}
+\captionsetup{justification=raggedright,singlelinecheck=false}
+\usepackage{indentfirst}
 
 % From https://ctan.org/pkg/matlab-prettifier
 \usepackage[numbered,framed]{matlab-prettifier}
@@ -93,58 +96,145 @@
   \item \textbf{Please make this document anonymous.}
 \end{itemize}
 
-\section*{In the beginning...}
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. See Equation~\ref{eq:one}.
-
-\begin{equation}
-a = b + c
-\label{eq:one}
-\end{equation}
-
-\section*{Interesting Implementation Detail}
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-My code snippet highlights an interesting point.
+\section*{Image Filtering} 
+I used Fast Fourier Transformation to implement image filtering. \par
+First, I padded the image with zeros according to the size of filter. For top and bottom of the pixel matrix, "floor(filter$\_$size(1) / 2)" rows of 0 were added, and for right and left of the pixel matrix, "floor(filter$\_$size(2) / 2)" columns of 0 were added (filter$\_$size = size(filter)). I also padded the filter using the same size and put the actual filter on the upper left corner.\par
+Then, I ran a loop k many times, where dimension of the image is m $\times$ n $\times$ k. So, if the image is grayscale, the loop is run 1 time, and if the image is colored, the loop if run 3 times. Inside the loop, I found Fast Fourier Transformation of padded image and padded filter using fft2 function. I then found padded convolution by multiplying elements of padded image and padded filter. I then used ifft2 function to find image of that product and found appropriate portion to unpad the image. \par
+Shown below is the code snippet: \par
 \begin{lstlisting}[style=Matlab-editor]
-one = 1;
-two = one + one;
-if two == 2
-    disp( 'This computer is not broken.' );
+filter_size = size(filter);
+if rem(filter_size(1), 2) == 0 || rem(filter_size(2), 2) == 0
+    error("Error: even-sized filter!");
 end
+
+filter_row = floor(filter_size(1)/2);
+filter_col = floor(filter_size(2)/2);
+image_size = size(image);
+
+pimage = padarray(image, [filter_row, filter_col]);
+pimage_size = size(pimage);
+pfilter = zeros(pimage_size(1), pimage_size(2));
+pfilter(1:filter_size(1), 1:filter_size(2)) = filter;
+ret = zeros(image_size);
+
+for k = 1:image_size(3)
+    f_image = fft2(pimage(:,:,k));
+    f_filter = fft2(pfilter);
+    padded_conv = ifft2(f_image .* f_filter);
+    ret(:,:,k) = padded_conv(2 * filter_row + 1 : pimage_size(1), 2 * filter_col + 1 : pimage_size(2));
+end 
+output = ret;
 \end{lstlisting}
 
-\section*{A Result}
-
-\begin{enumerate}
-    \item Result 1 was a total failure, because...
-    \item Result 2 (Figure~\ref{fig:result1}, left) was surprising, because...
-    \item Result 3 (Figure~\ref{fig:result1}, right) blew my socks off, because...
-\end{enumerate}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=5cm]{placeholder.jpg}
-    \includegraphics[width=5cm]{placeholder.jpg}
-    \caption{\emph{Left:} My result was spectacular. \emph{Right:} Curious.}
-    \label{fig:result1}
+Shown below are images that resulted from this code:
+\begin{figure} [!b]
+	\centering
+	\begin{subfigure}{0.3\linewidth}
+		\includegraphics[width=\linewidth]{cat.jpg}
+		\caption{Original picture:\\ 
+		\href{cat.jpg}{cat.jpg}}
+	\end{subfigure} \\
+	% 
+	\begin{subfigure}{0.3\linewidth}
+		\includegraphics[width=\linewidth]{identity_image.jpg}
+		\caption{Identity filter:\\ \href{identity_image.jpg}{identity$\_$image.jpg}}
+	\end{subfigure}
+	%
+	\begin{subfigure}{0.3\linewidth}
+		\includegraphics[width=\linewidth]{blur_image.jpg}
+		\caption{Small blur with box filter:\\ \href{blur_image.jpg}{blur$\_$image.jpg}}
+	\end{subfigure}
+	%
+	\begin{subfigure}{0.3\linewidth}
+		\includegraphics[width=\linewidth]{large_blur_image.jpg}
+		\caption{Large blur:\\ \href{large_blur_image.jpg}{large$\_$blur$\_$image.jpg}}
+	\end{subfigure}
+	%
+	\begin{subfigure}{0.3\linewidth}
+		\includegraphics[width=\linewidth]{sobel_image.jpg}
+		\caption{Oriented filter (Sobel Operator):\\ \href{sobel_image.jpg}{sobel$\_$image.jpg}}
+	\end{subfigure}
+	%
+	\begin{subfigure}{0.3\linewidth}
+		\includegraphics[width=\linewidth]{laplacian_image.jpg}
+		\caption{High pass filter (Discrete Laplacian):\\ \href{laplacian_image.jpg}{laplacian$\_$image.jpg}}
+	\end{subfigure}
+	%
+	\begin{subfigure}{0.3\linewidth}
+		\includegraphics[width=\linewidth]{high_pass_image.jpg}
+		\caption{High pass "filter" alternative:\\ \href{high_pass_image.jpg}{high$\_$pass$\_$image.jpg}}
+	\end{subfigure}
+	%
 \end{figure}
 
-My results are summarized in Table~\ref{tab:table1}.
+\section*{Hybrid Image}
 
-\begin{table}[h]
-    \centering
-    \begin{tabular}{lr}
-        \toprule
-        Condition & Time (seconds) \\
-        \midrule
-        Test 1 & 1 \\
-        Test 2 & 1000 \\
-        \bottomrule
-    \end{tabular}
-    \caption{Stunning revelation about the efficiency of my code.}
-    \label{tab:table1}
-\end{table}
+For part 2, I implemented the function gen$\_$hybrid$\_$image(image1, image2, cutoff$\_$frequency). This function first filters image1 through a low pass filter and image2 through a high pass filter. Then, it adds those two outputs up to create a new hybrid image. \par
+First, I created a square n $\times$ n Gaussian filter, where n is 2 $\times$ cutoff$\_$frequency $+$ 1, and standard deviation is cutoff$\_$frequency. Then, low$\_$frequencies was calculated by filtering image1 through the filter, creating a blurred version of image1. Likewise, high$\_$frequencies was calculated by subtracting blurred version of image2 - that was created by filtering image2 with filter - from image2 itself. Finally, I simply added those two matrices up to get hybrid$\_$image. \par
+Shown below is the code snippet:
+\begin{lstlisting}[style=Matlab-editor]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Remove high frequency to produce low frequencies only
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+filter = fspecial('Gaussian', cutoff_frequency*2+1, cutoff_frequency);
+high_pass_image = my_imfilter(image1, filter);
+high_pass_image = my_imfilter(high_pass_image, filter');
+low_frequencies = [high_pass_image];
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Remove low frequency to produce high frequencies only
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+low_pass_image = my_imfilter(image2, filter);
+low_pass_image = my_imfilter(low_pass_image, filter');
+low_pass_image = image2 - low_pass_image;
+high_frequencies = [low_pass_image];
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Combine the high frequencies and low frequencies
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+hybrid_image = [high_pass_image + low_pass_image];
+\end{lstlisting}
+
+\newpage
+Shown below are combinations of image1 = cat and image2 = dog:
+\begin{figure} [!htb]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{dog.jpg}
+		\caption{Image1:\\ \href{dog.jpg}{dog.jpg}}
+	\end{subfigure}
+	%
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{low_frequencies.jpg}
+		\caption{Image1 low frequencies:\\ \href{low_frequencies.jpg}{low$\_$frequencies.jpg}}
+	\end{subfigure}
+	%
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{cat.jpg}
+		\caption{Image2:\\ \href{cat.jpg}{cat.jpg}}
+	\end{subfigure}
+	%
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{high_frequencies.jpg}
+		\caption{Image2 high frequencies:\\ \href{high_frequencies.jpg}{high$\_$frequencies.jpg}}
+	\end{subfigure}
+	%
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{hybrid_image.jpg}
+		\caption{Two image combined:\\ \href{hybrid_image.jpg}{hybrid$\_$image.jpg}}
+	\end{subfigure}
+	%
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{hybrid_image_scales.jpg}
+		\caption{Two image combined scaled:\\ \href{hybrid_image_scales.jpg}{hybrid$\_$image$\_$scales.jpg}}
+	\end{subfigure}
+	%
+\end{figure}
+
 
 \end{document}

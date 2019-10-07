@@ -13,8 +13,7 @@ for i1 = 3:2:15 %row
         image2 = imresize(image, ratio);
         tic;
         result = imfilter(image2, filter);
-        elapsed = toc;
-        ret(row, col) = elapsed;
+        ret(row, col) = toc;
         col = col + 1;
     end
     row = row + 1;

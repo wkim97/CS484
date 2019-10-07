@@ -13,8 +13,9 @@ function [hybrid_image,low_frequencies,high_frequencies] = gen_hybrid_image( ima
 % Remove the high frequencies from image1 by blurring it. The amount of
 % blur that works best will vary with different image pairs
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-filter = fspecial('Gaussian', cutoff_frequency*4+1, cutoff_frequency);
+filter = fspecial('Gaussian', cutoff_frequency*2+1, cutoff_frequency);
 high_pass_image = my_imfilter(image1, filter);
+high_pass_image = my_imfilter(high_pass_image, filter');
 low_frequencies = [high_pass_image];
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -23,6 +24,7 @@ low_frequencies = [high_pass_image];
 % This will give you an image centered at zero with negative values.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 low_pass_image = my_imfilter(image2, filter);
+low_pass_image = my_imfilter(low_pass_image, filter');
 low_pass_image = image2 - low_pass_image;
 high_frequencies = [low_pass_image];
 

@@ -22,10 +22,9 @@ function output = my_imfilter(image, filter)
 
 %%%%%%%%%%%%%%%%
 % Your code here
-image = double(image);
 filter_size = size(filter);
 if rem(filter_size(1), 2) == 0 || rem(filter_size(2), 2) == 0
-    error("Error: even-sized filter!");
+    error("Error: even-sized filter!"); % Error message for even sized filters
 end
 
 filter_row = floor(filter_size(1)/2);
