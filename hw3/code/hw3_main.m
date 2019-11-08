@@ -32,7 +32,6 @@ plot(pts2(:,1),pts2(:,2),'go');
 % normalized eight-point algorithm
 Fundamental_matrix = calculate_fundamental_matrix(pts1, pts2);
 
-
 % Find the homography matrix for each left and right camera to project two
 % images on a common plane
 [Homography_left, Homography_right] = estimateUncalibratedRectification(Fundamental_matrix, pts1, pts2, size(img1));
