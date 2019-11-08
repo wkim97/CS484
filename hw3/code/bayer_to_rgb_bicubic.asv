@@ -8,9 +8,9 @@ function rgb_img = bayer_to_rgb_bicubic(bayer_img)
     % Initialize images
     [M, N] = size(bayer_img);
     img = uint8(zeros(M, N, 3));
-    red_bayer = double(zeros(M+2, N+2));
-    green_bayer = double(zeros(M+2, N+2));
-    blue_bayer = double(zeros(M+2, N+2));
+    red_bayer = uint8(zeros(M, N));
+    green_bayer = uint8(zeros(M+2, N+2));
+    blue_bayer = uint8(zeros(M+2, N+2));
     % img(x, y, 1) = R ==> x%2 == 1 && y%2 == 1
     % img(x, y, 2) = G ==> else
     % img(x, y, 3) = B ==> x%2 == 0 && y%2 == 0
@@ -29,8 +29,8 @@ function rgb_img = bayer_to_rgb_bicubic(bayer_img)
     end
                 
     % Interpolate each image channel
-    for i = 2:M-1
-        for j = 2:N-1
+    for i = 2:M+1
+        for j = 2:N+1
             if (rem(i,2) == 0 && rem(j,2) == 0) %Red Bayer
                 green_bayer(i,j) = (green_bayer(i-1,j) + green_bayer(i+1,j) + green_bayer(i,j-1) + green_bayer(i,j+1)) / 4;
                 blue_bayer(i,j) = (blue_bayer(i-1,j-1) + blue_bayer(i-1,j+1) + blue_bayer(i+1,j-1) + blue_bayer(i+1,j+1)) / 4;
@@ -46,12 +46,16 @@ function rgb_img = bayer_to_rgb_bicubic(bayer_img)
             end                
         end
     end
-
-    img(:,:,1) = uint8(red_bayer(2:M+1, 2:N+1));
-    img(:,:,2) = uint8(green_bayer(2:M+1, 2:N+1));
-    img(:,:,3) = uint8(blue_bayer(2:M+1, 2:N+1));
+    
+    red_bayer = red_bayer(2:M+1, 2:N+1);
+    blue_bayer = blue_bayer(2:M+1, 2:N+1);
+    green_bayer = green_bayer(2:M+1, 2:N+1);
+    img(:,:,1) = red_bayer;
+    img(:,:,2) = green_bayer;
+    img(:,:,3) = blue_bayer;
     
     rgb_img = img;
+%     rgb_img = demosaic(bayer_img, 'rggb');
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
 end

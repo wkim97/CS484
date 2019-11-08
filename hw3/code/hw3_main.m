@@ -1,7 +1,7 @@
 %% MATLAB version R2019b
 
 % Read bayer pattern images
-data_path = '../data/scene/';
+data_path = 'data/scene/';
 img_path_1 = [data_path,'bayer_cam1.png'];
 img_path_2 = [data_path,'bayer_cam2.png'];
 bayer_img1 = imread(img_path_1);
