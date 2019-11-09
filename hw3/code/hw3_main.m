@@ -45,7 +45,6 @@ Fundamental_matrix = calculate_fundamental_matrix(pts1, pts2);
 [Rectified_img_left, Rectified_img_right] = rectify_stereo_images(img1, img2, Homography_left, Homography_right);
 % [Rectified_img_left, Rectified_img_right] = rectifyStereoImages(img1, img2, Homography_left, Homography_right);
 
-
 % Visualize rectified images
 figure;
 subplot(2,2,1);
