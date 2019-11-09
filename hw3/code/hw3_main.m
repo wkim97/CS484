@@ -11,6 +11,8 @@ bayer_img2 = imread(img_path_2);
 % Bayer pattern bicubic interpolation
 img1 = bayer_to_rgb_bicubic(bayer_img1);
 img2 = bayer_to_rgb_bicubic(bayer_img2);
+% img1 = demosaic(bayer_img1, 'rggb');
+% img2 = demosaic(bayer_img2, 'rggb');
 
 % Read matched feature points (n by 2 array)
 feature_point = importdata([data_path, 'feature_points.txt']);
@@ -40,8 +42,8 @@ Fundamental_matrix = calculate_fundamental_matrix(pts1, pts2);
 
 %% HW3-c
 % Rectifiy each image
-% [Rectified_img_left, Rectified_img_right] = rectify_stereo_images(img1, img2, Homography_left, Homography_right);
-[Rectified_img_left, Rectified_img_right] = rectifyStereoImages(img1, img2, Homography_left, Homography_right);
+[Rectified_img_left, Rectified_img_right] = rectify_stereo_images(img1, img2, Homography_left, Homography_right);
+% [Rectified_img_left, Rectified_img_right] = rectifyStereoImages(img1, img2, Homography_left, Homography_right);
 
 
 % Visualize rectified images
