@@ -30,7 +30,7 @@ plot(pts2(:,1),pts2(:,2),'go');
 %% HW3-b
 % Find the fundamental matrix form given two feature point sets using the
 % normalized eight-point algorithm
-Fundamental_matrix = calculate_fundamental_matrix(pts1, pts2);
+% Fundamental_matrix = calculate_fundamental_matrix(pts1, pts2);
 % Fundamental_matrix = estimateFundamentalMatrix(pts1, pts2, 'Method','Norm8Point');
 
 % Find the homography matrix for each left and right camera to project two
