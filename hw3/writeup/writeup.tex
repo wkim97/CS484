@@ -59,6 +59,7 @@
 \usepackage{microtype}
 \usepackage{times}
 \usepackage{booktabs}
+\usepackage{amsmath}
 
 % From https://ctan.org/pkg/matlab-prettifier
 \usepackage[numbered,framed]{matlab-prettifier}
@@ -93,58 +94,109 @@
   \item \textbf{Please make this document anonymous.}
 \end{itemize}
 
-\section*{In the beginning...}
+\section*{Part A: Bayer Image Interpolation}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. See Equation~\ref{eq:one}.
+\subsection*{Introduction}
+The task of part A is to generate a M x N x 3 RGB image from a M x N bayer pattern image. I was given an option to adopt either bilinear method or bicubic method for interpolation, and I decided to use bilinear method.
 
-\begin{equation}
-a = b + c
-\label{eq:one}
-\end{equation}
-
-\section*{Interesting Implementation Detail}
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-My code snippet highlights an interesting point.
+\subsection*{Process and Algorithm}
+In order to complete the task, I was asked to implement the following function,
 \begin{lstlisting}[style=Matlab-editor]
-one = 1;
-two = one + one;
-if two == 2
-    disp( 'This computer is not broken.' );
-end
+function rgb_img = bayer_to_rgb_bicubic(bayer_img)
 \end{lstlisting}
+where bayer$\_$img is an M x N image, and rgb$\_$img is an M x N x 3 image. \\
 
-\section*{A Result}
+First, I initialized three M x N matrices, named red$\_$bayer, green$\_$bayer, and blue$\_$bayer, to store red, green, and blue intensity values, respectively, that were previously stored in bayer$\_$img. I extracted each of the red, green, and blue values by going through all pixels and determining whether their indices are even or odd. Since the image uses RGGB Bayer pattern, if row and column indices are both odd, it was a red pixel. Similarly, if they are both even, it was a blue pixel, and for the other cases, it was a green pixel. \\
 
-\begin{enumerate}
-    \item Result 1 was a total failure, because...
-    \item Result 2 (Figure~\ref{fig:result1}, left) was surprising, because...
-    \item Result 3 (Figure~\ref{fig:result1}, right) blew my socks off, because...
-\end{enumerate}
+After I stored each of the red, green, and blue pixel values into three separate matrices, I used bilinear interpolation to fill in the empty cells. I ran through all pixels and checked what color value was occupying the cell with same indices in bayer$\_$img. If it was a red cell, or the row and column indices were both odd, I interpolated cells in green$\_$bayer and blue$\_$bayer with same indices. Similarly, if the occupying cell was a blue cell, or the row and column indices were both even, I interpolated cells in red$\_$bayer and green$\_$bayer. For all other cases, I interpolated cells in red$\_$bayer and blue$\_$bayer. \\
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=5cm]{placeholder.jpg}
-    \includegraphics[width=5cm]{placeholder.jpg}
-    \caption{\emph{Left:} My result was spectacular. \emph{Right:} Curious.}
-    \label{fig:result1}
+To implement actual interpolation, I used neighboring cells. Since the bayer pattern is fixed to be RGGB, all interpolation patterns could be hard coded. For example, if a red pixel is occupying $(i,j)$ of bayer$\_$img, the green pixel at $(i,j)$ could be interpolated by taking average of four pixels at $(i-1,j)$, $(i+1,j)$, $(i,j-1)$, and $(i,j+1)$. Also, blue pixel at $(i,j)$ could be interpolated by taking average of four pixels at $(i-1,j-1)$, $(i-1,j+1)$, $(i+1,j-1)$, and $(i+1,j+1)$. Tricky cases were corners and boundaries. I hard coded all of those cases, which can be checked in the bayer$\_$to$\_$rgb$\_$bicubic.m file.
+
+\subsection*{Results}
+Shown below is the result from main code, which runs bayer$\_$to$\_$rgb$\_$bicubic on two bayer pattern images to obtain respective RGB images. Figure 1 shown below shows those two images with feature points added on them.
+\begin{figure} [!b]
+	\centering
+	\includegraphics[width=\linewidth]{../data/PartA.png}
+	\caption{RGB images interpolated from Bayer patterns}
 \end{figure}
 
-My results are summarized in Table~\ref{tab:table1}.
 
-\begin{table}[h]
-    \centering
-    \begin{tabular}{lr}
-        \toprule
-        Condition & Time (seconds) \\
-        \midrule
-        Test 1 & 1 \\
-        Test 2 & 1000 \\
-        \bottomrule
-    \end{tabular}
-    \caption{Stunning revelation about the efficiency of my code.}
-    \label{tab:table1}
-\end{table}
+\section*{Part B: Fundamental Matrix}
+
+\subsection*{Introduction}
+The task of this part was to find the fundamental matrix using the normalized eight-point algorithm. Please note I was unaware of normalize$\_$points.m file that has been already provided, and I implemented normalization on my own. This function
+\begin{lstlisting}[style=Matlab-editor]
+function f = calculate_fundamental_matrix(pts1, pts2)
+\end{lstlisting}
+takes in two points, pts1 and pts2, which are 8 x 2 doubles. These two points are feature points. Given these two sets of points, this function returns f, which is a 3 x 3 fundamental matrix.
+
+\subsection*{Process and Algorithm}
+First, I implemented normalization of points so that the average distance from origin to all points is $\sqrt{2}$. I scaled the points so that average distance from the points to their centroid is $\sqrt{2}$ and moved the points such that their centroid lies on the origin. \\
+
+I calculated centroid by taking average of all points. Then, I found distance between centroid and the points to calculate the mean distance mean$\_$dist. By scaling the distance between centroid and a specific point by $\frac{\sqrt{2}}{mean\_dist}$, I could make average distance $\sqrt{2}$. Then, to move centroid to the origin, I subtracted $\frac{\sqrt{2}}{mean\_dist} \times centroid$ from all scaled points. The code snippet below shows actual implementation.
+\begin{lstlisting}[style=Matlab-editor]
+l = length(pts1);
+center1 = [mean(pts1(:,1)) mean(pts1(:,2))]; 
+center2 = [mean(pts2(:,1)) mean(pts2(:,2))];
+center1 = repmat(center1, 8, 1);
+center2 = repmat(center2, 8, 1);
+dist1 = sqrt(sum((pts1 - center1).^2, 2));
+mean_dist1 = mean(dist1);
+dist2 = sqrt(sum((pts2 - center2).^2, 2));
+mean_dist2 = mean(dist2);
+norm1 = [sqrt(2)/mean_dist1, 0,
+        (-sqrt(2)/mean_dist1)*center1(1,1);...
+        0, sqrt(2)/mean_dist1, (-sqrt(2)/mean_dist1)*center1(2,2);...
+        0, 0, 1];
+norm2 = [sqrt(2)/mean_dist2, 0,
+        (-sqrt(2)/mean_dist2)*center2(1,1);...
+        0, sqrt(2)/mean_dist2, (-sqrt(2)/mean_dist2)*center2(2,2);...
+        0, 0, 1];
+\end{lstlisting}
+
+After finding normalization matrices norm1 and norm2, I multiplied them with feature points to find normalized points, npts1 and npts2. They represented $(x, y)$ and $(x', y')$, respectively, where $x$, $x'$, $y$, and $y'$ are column vectors. I combined them to obtain matrix A by following given model in the instructions and calculated f, which is the eigenvector of $A^TA$ corresponding to the smallest eigenvalue. \\
+
+After reshaping f to a 3 x 3 matrix, or F, I performed single value decomposition on F to find U, S, and V. Matrix S here contains singular values in its diagonal. To find the fundamental matrix, I removed the smallest singular value and calculated $USV^T$ again, with the modified $S$, to get fundamental matrix F. Lastly, to transform fundamental matrix back to original units, I calculated $norm2'Fnorm1$, which is the fundamental matrix in original units. The code snippet below shows this process. 
+\begin{lstlisting}[style=Matlab-editor]
+npts1 = [transpose(npts1(1,:)) transpose(npts1(2,:))];
+npts2 = [transpose(npts2(1,:)) transpose(npts2(2,:))];
+x = npts1(:,1);
+y = npts1(:,2);
+xp = npts2(:,1);
+yp = npts2(:,2);
+A = [x.*xp x.*yp x y.*xp y.*yp y xp yp ones(l, 1)];
+[V,D] = eig(A'*A);
+F=reshape(V(:,1), 3, 3);
+[U,S,V] = svd(F);
+F = U*diag([S(1,1) S(2,2) 0])*V';
+F = norm2'*F*norm1;
+f = F;    
+\end{lstlisting}
+
+\subsection*{Results}
+To test the correctness of my implementation, I compared the results from calculate$\_$fundamental$\_$matrix(pts1, pts2), which is the function I implemented, with the results from estimateFundamentalMatrix(pts1, pts2, 'Method','Norm8Point'), which is the built-in function of MATLAB. Fundamental matrices resulting from each function are shown below:
+\[
+implemented=
+\begin{bmatrix}
+3.3023e-08 & -7.9635e-07 & -2.3878e-05 \\
+7.2653e-07 & -4.1038e-08 & -0.0046 \\
+-1.6755e-04 & 0.0046 & -0.0215
+\end{bmatrix}\quad
+\]
+\[
+builtin=
+\begin{bmatrix}
+-1.4734e-06 & 3.5531e-05 & 0.0011 \\
+-3.2416e-05 & 1.8310e-06 & 0.2062 \\
+0.0075 & -0.2074 & 0.9572
+\end{bmatrix}
+\]
+As shown, the implemented function produces fundamental matrix that is the built-in fundamental matrix scaled by $-0.02241252877$. Note that since fundamental matrix is used to make correspondence between two points x and x', scale factor is not important; two fundamental matrices that differ by scale factor behave in the same way.
+
+
+\section*{Part C: Image Rectification}
+
+
+\section*{Part D: NCC Disparity Map}
 
 \end{document}

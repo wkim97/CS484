@@ -7,7 +7,6 @@ function d = calculate_disparity_map(img_left, img_right, window_size, max_dispa
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Your code here
-    tic;
     [h, w] = size(img_left);
     temp = zeros([h, w, max_disparity]);
     half = floor(window_size/2);
@@ -36,20 +35,14 @@ function d = calculate_disparity_map(img_left, img_right, window_size, max_dispa
     
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    cost_vol = zeros(h,w);
+    
     for i = 1:h
         for j = 1:w
             max_d = 0;
             for d = 1:max_disparity
                 if temp(i,j,d) >= max_d
-                    max_d = temp(i,j,d);
-                end
-            end
-            cost_vol(i,j) = max_d;
-        end
-    end 
-    toc;
+                    max_d = temp(i,j,d)
     % winner takes all
-    d = cost_vol;
+    [min_val, d] = max(cost_vol,[],3);
 
 end

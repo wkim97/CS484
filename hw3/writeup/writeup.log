@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.10.6)  10 NOV 2019 15:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.10.6)  10 NOV 2019 18:05
 entering extended mode
 **./writeup.tex
 (writeup.tex
@@ -343,36 +343,69 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \@lastruleclass=\count116
 \@thisrulewidth=\dimen133
 )
-("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\subcap
-tion.sty"
-Package: subcaption 2019/09/01 v1.3a Sub-captions (AR)
+("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsmat
+h.sty"
+Package: amsmath 2018/12/01 v2.17b AMS math features
+\@mathmargin=\skip61
 
-("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\captio
-n.sty"
-Package: caption 2019/09/01 v3.3d Customizing captions (AR)
+For additional information on amsmath, use the `?' option.
 
-("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\captio
-n3.sty"
-Package: caption3 2019/09/01 v1.8d caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 64.
-\captionmargin=\dimen134
-\captionmargin@=\dimen135
-\captionwidth=\dimen136
-\caption@tempdima=\dimen137
-\caption@indent=\dimen138
-\caption@parindent=\dimen139
-\caption@hangindent=\dimen140
+("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amstex
+t.sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsgen
+.sty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks19
+\ex@=\dimen134
+))
+("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsbsy
+.sty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen135
 )
-\c@caption@flags=\count117
-\c@ContinuedFloat=\count118
-Package caption Info: hyperref package is loaded.
+("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsopn
+.sty"
+Package: amsopn 2016/03/08 v2.02 operator names
 )
-\c@subfigure=\count119
-\c@subtable=\count120
-)
-("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\indentfi
-rst.sty"
-Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+\inf@bad=\count117
+LaTeX Info: Redefining \frac on input line 223.
+\uproot@=\count118
+\leftroot@=\count119
+LaTeX Info: Redefining \overline on input line 385.
+\classnum@=\count120
+\DOTSCASE@=\count121
+LaTeX Info: Redefining \ldots on input line 482.
+LaTeX Info: Redefining \dots on input line 485.
+LaTeX Info: Redefining \cdots on input line 606.
+\Mathstrutbox@=\box31
+\strutbox@=\box32
+\big@size=\dimen136
+LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
+\macc@depth=\count122
+\c@MaxMatrixCols=\count123
+\dotsspace@=\muskip11
+\c@parentequation=\count124
+\dspbrk@lvl=\count125
+\tag@help=\toks20
+\row@=\count126
+\column@=\count127
+\maxfields@=\count128
+\andhelp@=\toks21
+\eqnshift@=\dimen137
+\alignsep@=\dimen138
+\tagshift@=\dimen139
+\tagwidth@=\dimen140
+\totwidth@=\dimen141
+\lineht@=\dimen142
+\@envbody=\toks22
+\multlinegap=\skip62
+\multlinetaggap=\skip63
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2844.
+LaTeX Info: Redefining \] on input line 2845.
 )
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/matlab-prettif
 ier\matlab-prettifier.sty"
@@ -560,71 +593,71 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\listi
 ngs.sty"
-\lst@mode=\count121
-\lst@gtempboxa=\box31
-\lst@token=\toks19
-\lst@length=\count122
-\lst@currlwidth=\dimen141
-\lst@column=\count123
-\lst@pos=\count124
-\lst@lostspace=\dimen142
-\lst@width=\dimen143
-\lst@newlines=\count125
-\lst@lineno=\count126
-\lst@maxwidth=\dimen144
+\lst@mode=\count129
+\lst@gtempboxa=\box33
+\lst@token=\toks24
+\lst@length=\count130
+\lst@currlwidth=\dimen143
+\lst@column=\count131
+\lst@pos=\count132
+\lst@lostspace=\dimen144
+\lst@width=\dimen145
+\lst@newlines=\count133
+\lst@lineno=\count134
+\lst@maxwidth=\dimen146
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\lstmi
 sc.sty"
 File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
-\c@lstnumber=\count127
-\lst@skipnumbers=\count128
-\lst@framebox=\box32
+\c@lstnumber=\count135
+\lst@skipnumbers=\count136
+\lst@framebox=\box34
 )
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\listi
 ngs.cfg"
 File: listings.cfg 2019/09/10 1.8c listings configuration
 ))
 Package: listings 2019/09/10 1.8c (Carsten Heinz)
-\netBracketCount@mlpr=\count129
-\blkLvl@mlpr=\count130
-\blkLvlAtClassdef@mlpr=\count131
-\emHeight@mlpr=\skip61
-\jayDepth@mlpr=\skip62
-\sectionRuleOffset@mlpr=\skip63
-\toks@mlpr=\toks20
+\netBracketCount@mlpr=\count137
+\blkLvl@mlpr=\count138
+\blkLvlAtClassdef@mlpr=\count139
+\emHeight@mlpr=\skip64
+\jayDepth@mlpr=\skip65
+\sectionRuleOffset@mlpr=\skip66
+\toks@mlpr=\toks25
 ) (writeup.aux)
 \openout1 = `writeup.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 84.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 84.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 82.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 82.
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ts1cmr.fd
 "
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 84.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 82.
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ot1ptm.
 fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
-\AtBeginShipoutBox=\box33
-Package hyperref Info: Link coloring ON on input line 84.
+\AtBeginShipoutBox=\box35
+Package hyperref Info: Link coloring ON on input line 82.
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\namer
 ef.sty"
@@ -634,11 +667,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 titlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count132
+\c@section@level=\count140
 )
-LaTeX Info: Redefining \ref on input line 84.
-LaTeX Info: Redefining \pageref on input line 84.
-LaTeX Info: Redefining \nameref on input line 84.
+LaTeX Info: Redefining \ref on input line 82.
+LaTeX Info: Redefining \pageref on input line 82.
+LaTeX Info: Redefining \nameref on input line 82.
  (writeup.out) (writeup.out)
 \@outlinefile=\write3
 \openout3 = `writeup.out'.
@@ -682,17 +715,17 @@ LaTeX Info: Redefining \nameref on input line 84.
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\su
 pp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count133
-\scratchdimen=\dimen145
-\scratchbox=\box34
-\nofMPsegments=\count134
-\nofMParguments=\count135
-\everyMPshowfont=\toks21
-\MPscratchCnt=\count136
-\MPscratchDim=\dimen146
-\MPnumerator=\count137
-\makeMPintoPDFobject=\count138
-\everyMPtoPDFconversion=\toks22
+\scratchcounter=\count141
+\scratchdimen=\dimen147
+\scratchbox=\box36
+\nofMPsegments=\count142
+\nofMParguments=\count143
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count144
+\MPscratchDim=\dimen148
+\MPnumerator=\count145
+\makeMPintoPDFobject=\count146
+\everyMPtoPDFconversion=\toks27
 )
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epsto
 pdf-base.sty"
@@ -709,7 +742,7 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-LaTeX Info: Redefining \microtypecontext on input line 84.
+LaTeX Info: Redefining \microtypecontext on input line 82.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -724,38 +757,28 @@ Package microtype Info: No adjustment of character kerning.
 tm.cfg"
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: listings package is loaded.
-Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count139
+\c@lstlisting=\count147
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/microtype\mt-c
 mr.cfg"
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 86.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 86.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 86.
-
 
 LaTeX Warning: No \author given.
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 89.
-LaTeX Font Info:    Try loading font information for TS1+ptm on input line 91.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 87.
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 89.
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ts1ptm.
 fd"
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 96.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 101.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 94.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 99.
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 104.
 
 
@@ -767,57 +790,42 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `pcr' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [1{C:/Users/김우재/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
-]
-<cat.jpg, id=27, 411.5375pt x 362.35374pt>
-File: cat.jpg Graphic file (type jpg)
-<use cat.jpg>
-Package pdftex.def Info: cat.jpg  used on input line 133.
-(pdftex.def)             Requested size: 114.21051pt x 100.55711pt.
-<identity_image.jpg, id=29, 288.07625pt x 253.94875pt>
-File: identity_image.jpg Graphic file (type jpg)
-<use identity_image.jpg>
-Package pdftex.def Info: identity_image.jpg  used on input line 139.
-(pdftex.def)             Requested size: 114.21051pt x 100.67871pt.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 140.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 140.
-<blur_image.jpg, id=31, 288.07625pt x 253.94875pt>
-File: blur_image.jpg Graphic file (type jpg)
-<use blur_image.jpg>
-Package pdftex.def Info: blur_image.jpg  used on input line 144.
-(pdftex.def)             Requested size: 114.21051pt x 100.67871pt.
-<large_blur_image.jpg, id=33, 288.07625pt x 253.94875pt>
-File: large_blur_image.jpg Graphic file (type jpg)
-<use large_blur_image.jpg>
-Package pdftex.def Info: large_blur_image.jpg  used on input line 149.
-(pdftex.def)             Requested size: 114.21051pt x 100.67871pt.
-<sobel_image.jpg, id=35, 288.07625pt x 253.94875pt>
-File: sobel_image.jpg Graphic file (type jpg)
-<use sobel_image.jpg>
-Package pdftex.def Info: sobel_image.jpg  used on input line 154.
-(pdftex.def)             Requested size: 114.21051pt x 100.67871pt.
-<laplacian_image.jpg, id=37, 288.07625pt x 253.94875pt>
-File: laplacian_image.jpg Graphic file (type jpg)
-<use laplacian_image.jpg>
-Package pdftex.def Info: laplacian_image.jpg  used on input line 159.
-(pdftex.def)             Requested size: 114.21051pt x 100.67871pt.
-<high_pass_image.jpg, id=39, 288.07625pt x 253.94875pt>
-File: high_pass_image.jpg Graphic file (type jpg)
-<use high_pass_image.jpg>
-Package pdftex.def Info: high_pass_image.jpg  used on input line 164.
-(pdftex.def)             Requested size: 114.21051pt x 100.67871pt.
+Underfull \hbox (badness 10000) in paragraph at lines 107--108
 
-Overfull \hbox (12.0595pt too wide) in paragraph at lines 172--172
-[]\OT1/ptm/m/n/10.95 (-20) For part 2, I im-ple-mented the func-tion gen$[]$hyb
-rid$[]$image(image1, im-age2, cutoff$[]$frequency).
  []
 
-[2 <./cat.jpg> <./identity_image.jpg> <./blur_image.jpg> <./large_blur_image.jp
-g> <./sobel_image.jpg> <./laplacian_image.jpg> <./high_pass_image.jpg>]
-LaTeX Font Info:    Try loading font information for TS1+pcr on input line 179.
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--110
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 111--112
+
+ []
+
+[1{C:/Users/김우재/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+
+]
+<../data/PartA.png, id=17, 421.575pt x 316.18124pt>
+File: ../data/PartA.png Graphic file (type png)
+<use ../data/PartA.png>
+Package pdftex.def Info: ../data/PartA.png  used on input line 119.
+(pdftex.def)             Requested size: 380.69788pt x 285.53021pt.
+
+[2 <../data/PartA.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 134--135
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 157--158
+
+ []
+
+[3]
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 168.
 
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ts1pcr.
@@ -828,80 +836,46 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `pcr' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [3]
-<dog.jpg, id=83, 411.5375pt x 362.35374pt>
-File: dog.jpg Graphic file (type jpg)
-<use dog.jpg>
-Package pdftex.def Info: dog.jpg  used on input line 203.
-(pdftex.def)             Requested size: 190.34894pt x 167.59703pt.
-<low_frequencies.jpg, id=85, 411.5375pt x 362.35374pt>
-File: low_frequencies.jpg Graphic file (type jpg)
-<use low_frequencies.jpg>
-Package pdftex.def Info: low_frequencies.jpg  used on input line 209.
-(pdftex.def)             Requested size: 190.34894pt x 167.59703pt.
-File: cat.jpg Graphic file (type jpg)
-<use cat.jpg>
-Package pdftex.def Info: cat.jpg  used on input line 215.
-(pdftex.def)             Requested size: 190.34894pt x 167.59703pt.
-<high_frequencies.jpg, id=88, 411.5375pt x 362.35374pt>
-File: high_frequencies.jpg Graphic file (type jpg)
-<use high_frequencies.jpg>
-Package pdftex.def Info: high_frequencies.jpg  used on input line 221.
-(pdftex.def)             Requested size: 190.34894pt x 167.59703pt.
-<hybrid_image.jpg, id=90, 411.5375pt x 362.35374pt>
-File: hybrid_image.jpg Graphic file (type jpg)
-<use hybrid_image.jpg>
-Package pdftex.def Info: hybrid_image.jpg  used on input line 227.
-(pdftex.def)             Requested size: 190.34894pt x 167.59703pt.
-<hybrid_image_scales.jpg, id=92, 819.06pt x 362.35374pt>
-File: hybrid_image_scales.jpg Graphic file (type jpg)
-<use hybrid_image_scales.jpg>
-Package pdftex.def Info: hybrid_image_scales.jpg  used on input line 233.
-(pdftex.def)             Requested size: 190.34894pt x 84.20767pt.
 
-Overfull \hbox (2.0805pt too wide) in paragraph at lines 201--237
-[]$[]$ $[]$
+Overfull \hbox (82.30042pt too wide) in paragraph at lines 177--178
+\OT1/ptm/m/n/10.95 (-20) To test the cor-rect-ness of my im-ple-men-ta-tion, I 
+com-pared the re-sults from calculate$[]$fundamental$[]$matrix(pts1,
  []
 
-
-Overfull \hbox (2.0805pt too wide) in paragraph at lines 201--237
-[]$ $[]$
- []
-
-
-Overfull \hbox (2.0805pt too wide) in paragraph at lines 201--237
-[]$ $[]$ 
- []
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 240.
-[4 <./dog.jpg> <./low_frequencies.jpg> <./high_frequencies.jpg> <./hybrid_image
-.jpg> <./hybrid_image_scales.jpg>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 240.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 203.
+[4] [5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 203.
  (writeup.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 240.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 240.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 203.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 203.
 Package rerunfilecheck Info: File `writeup.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 240.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 203.
  ) 
 Here is how much of TeX's memory you used:
- 12640 strings out of 492895
- 194698 string characters out of 3121867
- 390373 words of memory out of 3000000
- 16292 multiletter control sequences out of 15000+200000
- 19101 words of font info for 70 fonts, out of 3000000 for 9000
+ 12050 strings out of 492895
+ 179459 string characters out of 3121867
+ 400411 words of memory out of 3000000
+ 15684 multiletter control sequences out of 15000+200000
+ 22006 words of font info for 92 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,12n,56p,986b,2041s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 34i,11n,56p,986b,1435s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r
 .enc}<C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmr10.pfb><C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/김우재/AppData/Local/Program
-s/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/김우재/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/김우재/App
-Data/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
-Output written on writeup.pdf (4 pages, 558750 bytes).
+msfonts/cm/cmex10.pfb><C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/김우재/AppData/Local/Progra
+ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/김우재/AppD
+ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/User
+s/김우재/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+r8.pfb><C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb><C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/김우재/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/김우재/AppData/L
+ocal/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/김우재/A
+ppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
+Output written on writeup.pdf (5 pages, 217538 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
+ 128 PDF objects out of 1000 (max. 8388607)
  54 named destinations out of 1000 (max. 500000)
- 17469 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 13318 words of extra memory for PDF output out of 14400 (max. 10000000)
 
