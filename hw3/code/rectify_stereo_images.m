@@ -29,9 +29,5 @@ function [rectified1, rectified2] = rectify_stereo_images(img1, img2, h1, h2) % 
     r2 = imwarp(img2, hform2, 'OutputView', imref2d([(x_max-x_min), (y_max-y_min)], [y_min y_max], [x_min x_max]));
 
     rectified1 = r1;
-    rectified2 = r2;
-    
-    
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    
+    rectified2 = r2;    
 end

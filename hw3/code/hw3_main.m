@@ -54,8 +54,8 @@ imshow(stereoAnaglyph(Rectified_img_left, Rectified_img_right));title('Stereo An
 %% HW3-d
 % Generate a disparity map from the two rectified images
 % You may change the window_size and max_disparity
-window_size = 3;
-max_disparity = 40;
+window_size = 5;
+max_disparity = 10;
 
 gray_img1 = im2double(rgb2gray(Rectified_img_left));
 gray_img2 = im2double(rgb2gray(Rectified_img_right));

@@ -2,7 +2,6 @@
 % Generate the disparity map from two rectified images. Use NCC for the
 % mathing cost function.
 function d = calculate_disparity_map(img_left, img_right, window_size, max_disparity)
-    % window_size = 5, max_disparity = 40
     % img_left, img_right = 640x1015 double
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -31,11 +30,7 @@ function d = calculate_disparity_map(img_left, img_right, window_size, max_dispa
             end
         end
     end
-                
-    % cost_vol(x,y,d) = NCC between block at (x,y) and (x+d,y)
     
-
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     cost_vol = zeros(h,w);
     for i = 1:h
         for j = 1:w
@@ -49,7 +44,6 @@ function d = calculate_disparity_map(img_left, img_right, window_size, max_dispa
         end
     end 
     toc;
-    % winner takes all
     d = cost_vol;
 
 end

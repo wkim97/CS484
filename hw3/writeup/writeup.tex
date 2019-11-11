@@ -60,6 +60,9 @@
 \usepackage{times}
 \usepackage{booktabs}
 \usepackage{amsmath}
+\usepackage{subcaption}
+\usepackage{indentfirst}
+
 
 % From https://ctan.org/pkg/matlab-prettifier
 \usepackage[numbered,framed]{matlab-prettifier}
@@ -97,14 +100,13 @@
 \section*{Part A: Bayer Image Interpolation}
 
 \subsection*{Introduction}
-The task of part A is to generate a M x N x 3 RGB image from a M x N bayer pattern image. I was given an option to adopt either bilinear method or bicubic method for interpolation, and I decided to use bilinear method.
-
-\subsection*{Process and Algorithm}
-In order to complete the task, I was asked to implement the following function,
+The task of part A is to generate a M x N x 3 RGB image from a M x N bayer pattern image. I was given an option to adopt either bilinear method or bicubic method for interpolation, and I decided to use bilinear method. In order to complete the task, I was asked to implement the following function,
 \begin{lstlisting}[style=Matlab-editor]
 function rgb_img = bayer_to_rgb_bicubic(bayer_img)
 \end{lstlisting}
 where bayer$\_$img is an M x N image, and rgb$\_$img is an M x N x 3 image. \\
+
+\subsection*{Process and Algorithm}
 
 First, I initialized three M x N matrices, named red$\_$bayer, green$\_$bayer, and blue$\_$bayer, to store red, green, and blue intensity values, respectively, that were previously stored in bayer$\_$img. I extracted each of the red, green, and blue values by going through all pixels and determining whether their indices are even or odd. Since the image uses RGGB Bayer pattern, if row and column indices are both odd, it was a red pixel. Similarly, if they are both even, it was a blue pixel, and for the other cases, it was a green pixel. \\
 
@@ -191,12 +193,128 @@ builtin=
 0.0075 & -0.2074 & 0.9572
 \end{bmatrix}
 \]
-As shown, the implemented function produces fundamental matrix that is the built-in fundamental matrix scaled by $-0.02241252877$. Note that since fundamental matrix is used to make correspondence between two points x and x', scale factor is not important; two fundamental matrices that differ by scale factor behave in the same way.
+As shown, the implemented function produces fundamental matrix that is the built-in fundamental matrix scaled by $-0.02241252877$. Note that since fundamental matrix is used to make correspondence between two points x and x', scale factor is not important; two fundamental matrices that differ by a scale factor behave in the same way.
 
 
 \section*{Part C: Image Rectification}
 
+\subsection*{Introduction}
+The task of this part was to generate rectified image pairs given two images and their respective homography matrices that have been generated from fundamental matrices. In this part, I implemented the following function,
+\begin{lstlisting}[style=Matlab-editor]
+function [rectified1, rectified2] = rectify_stereo_images(img1, img2, h1, h2)
+\end{lstlisting}
+where img1 and img2 are M x N x 3 images, h1 and h2 are 3 x 3 homography matrices, and rectified1 and rectified2 are M' x N' x 3 images. The goal of this function was to produce two rectified images such that they contain respective images, which are img1 and img2, and to assign them the same size such that an anaglyph of those images can be created.
+
+\subsection*{Process and Algorithm}
+Three important MATLAB functions were used to implement this function: 1) projective2d, 2) imwarp, and 3) transformPointsForward. \\
+
+First, I called projective2d on homography matrices h1 and h2 to create hform1 and hform2, which are transformations of type "projective2d" object. This was an important step because imwarp takes in transformation as projective2d.\\
+
+Then, I applied transformPointsForward on the four corners of the original image, once with hform1 and once with hform2. This was aimed at determining where the corners, which are $(1,1)$, $(540,1)$, $(1,960)$, and $(540,960)$, would map to once the transformation was applied. Rectified image would show the whole image after transformation if all of its corners after the transformation were contained within the appropriate range, and that is why I applied transformPointsForward on the corners - to determine the range and size of image.  \\
+
+After I found mapping of corners, I determined the range of rectified images by looking at the minimum and maximum mapped indices. Letting x$\_$min, x$\_$max, y$\_$min, and y$\_$max be the minimum and maximum of x and y mapped values, I set range to be [x$\_$min:x$\_$max, y$\_$min:y$\_$max]. Also, I set the size of rectified images to be [x$\_$max-x$\_$min, y$\_$max-y$\_$min]. Then, I performed actual transformation on the images by using imwarp function and imref2d function. As a result, the function produced two rectified, aligned images. \\
+
+Shown below is the code snippet to show how the three functions have been used to created rectified images.
+\begin{lstlisting}[style=Matlab-editor]
+hform1 = projective2d(h1);
+hform2 = projective2d(h2);
+...
+dim1 = transformPointsForward(hform1, corners);
+dim2 = transformPointsForward(hform2, corners);
+...
+r1 = imwarp(img1, hform1, 'OutputView', imref2d([(x_max-x_min), (y_max-y_min)], [y_min y_max], [x_min x_max]));
+r2 = imwarp(img2, hform2, 'OutputView', imref2d([(x_max-x_min), (y_max-y_min)], [y_min y_max], [x_min x_max]));
+\end{lstlisting}
+
+\subsection*{Results}
+To test if the function has been implemented correctly, the main function contains codes to draw out rectified images and their anaglyph. I compared the results with the example provided in the instructions to determine whether my results were correct or not. My results produced correct rectification and anaglyph, as shown below in figure 2.
+\begin{figure}[!b]
+	\centering
+	\includegraphics[width=\linewidth]{../data/Figure2.png}
+	\caption{Rectified images and their anaglyph}
+\end{figure}
+
+
 
 \section*{Part D: NCC Disparity Map}
+
+\subsection*{Introduction}
+The task of this part was to generate a disparity map for two rectified images by using Normalized Cross Correlation(NCC). The formula for finding disparity by using NCC is given as: \\
+$NCC = \dfrac{\sum_i\sum_jA(i,j)B(i,j)}{\sqrt{\sum_i\sum_jA(i,j)^2}\sqrt{\sum_i\sum_jB(i,j)^2}}$. \\
+
+To complete the task, I implemented the following function,
+\begin{lstlisting} [style=Matlab-editor]
+function d = calculate_disparity_map(img_left, img_right, window_size, max_disparity)
+\end{lstlisting}
+where img$\_$left and img$\_$right are M x N doubles, window$\_$size is the size of disparity window given as int, and max$\_$disparity is maximum disparity given as int. The function returns d, which is an M x N doubles that contains maximum disparity value at each image index.
+
+\subsection*{Process and Algorithm}
+Algorithms for this task are pretty straightforward. I used a naive box filter method, where for every pixel, box filter is applied to specific disparity d. I ran a double for loop, going through all pixels. Inside that double loop, I ran through all possible values of d, from 1 to min(max$\_$disparity, w-j-half), where w is width of image, j is current x-index being compared, and half is window$\_$size divided by 2 - to avoid index overflow near the boundaries. Going through all pixels of the image, I created a submatrix of img$\_$left and img$\_$right of sizes (window$\_$size x window$\_$size). Submatrix of img$\_$left was centered at (i,j), and submatrix of img$\_$right was centered at (i,j+d). Then, the NCC value was stored at temp(i,j,d), where temp is a M x N x max$\_$disparity matrix that stores all NCC disparity values. \\
+
+After calculating NCC values of all pixels, the best disparity for each pixel was chosen. Again, I ran through all pixels using a double for loop, and for each (i,j) pixel, I checked all disparity values - from 1 to max$\_$disparity. The highest disparity value was chosen as the winner and stored to cost$\_$vol(i,j), where cost$\_$vol is an M x N matrix that stores winning disparity values. \\
+
+Different window sizes produce different disparity maps. Larger window sizes ensure a smoother disparity map with less noise, but it sacrifices details and produces edge bleeding. Smaller windows sizes ensure meticulous details, but it produces more noise. I tested window sizes of 3, 5, 9, and 15. Similarly, I also tested maximum disparity values of 20, 40, and 60.
+
+\subsection*{Results}
+Since the disparity map differs based on window size and maximum disparity value, I tested out several possible combinations. The first set of images shows varying window sizes - 3, 5, 9, and 15 - with set maximum disparity value of 40. As clearly seen, as window size increases, the disparity map shows less noise and more smoothness but also more edge bleeding and less details.
+\begin{figure} [!htb]
+	\centering
+	\begin{subfigure}{0.45\linewidth}
+		\includegraphics[width=\linewidth]{../data/3,40.png}
+		\caption{Window size: 3, 
+			\\Maximum disparity: 40}
+	\end{subfigure}
+	% 
+	\begin{subfigure}{0.45\linewidth}
+		\includegraphics[width=\linewidth]{../data/5,40.png}
+		\caption{Window size: 5, 
+			\\Maximum disparity: 40}
+	\end{subfigure} \\
+	%
+	\begin{subfigure}{0.45\linewidth}
+		\includegraphics[width=\linewidth]{../data/9,40.png}
+		\caption{Window size: 9, 
+			\\Maximum disparity: 40}
+	\end{subfigure}
+	%
+	\begin{subfigure}{0.45\linewidth}
+		\includegraphics[width=\linewidth]{../data/15,40.png}
+		\caption{Window size: 15, 
+			\\Maximum disparity: 40}
+	\end{subfigure}
+	%
+\end{figure}
+
+Similarly, I tested out disparity maps with varying maximum disparity - 20, 40, and 60 - with set window size of 5. 
+\begin{figure} 
+	\centering
+	\begin{subfigure}{0.45\linewidth}
+		\includegraphics[width=\linewidth]{../data/5,10.png}
+		\caption{Window size: 5, 
+			\\Maximum disparity: 10}
+	\end{subfigure}
+	% 
+	\begin{subfigure}{0.45\linewidth}
+		\includegraphics[width=\linewidth]{../data/5,20.png}
+		\caption{Window size: 5, 
+			\\Maximum disparity: 20}
+	\end{subfigure}
+	% 
+	\begin{subfigure}{0.45\linewidth}
+		\includegraphics[width=\linewidth]{../data/5,40.png}
+		\caption{Window size: 5, 
+			\\Maximum disparity: 40}
+	\end{subfigure}	
+	%
+	\begin{subfigure}{0.45\linewidth}
+		\includegraphics[width=\linewidth]{../data/5,60.png}
+		\caption{Window size: 5, 
+			\\Maximum disparity: 60}
+	\end{subfigure}
+	%
+\end{figure}
+In general, as the maximum disparity increases, disparity values increase to be closer to 1, thus making the disparity map less color-distinct. 
+
+
 
 \end{document}
