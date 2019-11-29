@@ -30,10 +30,12 @@ function [matches, confidences] = match_features(features1, features2)
 % matches(:,2) = randperm(num_features);
 % confidences = rand(num_features,1);
 
-[N K] = size(features1);
+[N1 K1] = size(features1);
+[N2 K2] = size(features2);
+N = min(N1, N2);
 matches = zeros(N, 2);
 confidences = zeros(N, 1);
-threshold = 0.9;
+threshold = 0.8;
 
 neighbors = zeros(N, N);
 for i = 1:N
@@ -64,6 +66,7 @@ confidences( ~any(confidences,2), : ) = [];
 
 [confidences, sort_index] = sort(confidences, 'descend');
 matches = matches(sort_index,:);
+end
 
 % Remember that the NNDR test will return a number close to 1 for 
 % feature points with similar distances.

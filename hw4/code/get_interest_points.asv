@@ -49,42 +49,26 @@ function [x, y, confidence, scale, orientation] = get_interest_points(image, des
 
 cell_size = descriptor_window_image_width/2;
 
-% 1. Compute image derivatives
 filter_x = [1 0 -1; 2 0 -2; 1 0 -1];
 filter_y = [1 2 1; 0 0 0; -1 -2 -1];
 Ix = imfilter(image, filter_x);
 Iy = imfilter(image, filter_y);
+Ixx = imfilter(Ix, filter_x);
+Iyy = imfilter(Iy, filter_y);
+Ixy = imfilter(Ix, filter_y);
 
-% 2. Compute M components as squares of derivatives
-Ixx = Ix.*Ix;
-Iyy = Iy.*Iy;
-Ixy = Ix.*Iy;
-
-% 3. Apply a Gaussian filter
-G = fspecial('gaussian', [5,5], 2); % To be experimented around
-Ixx = imfilter(Ixx, G);
-Iyy = imfilter(Iyy, G);
-Ixy = imfilter(Ixy, G);
-
-% 4. Compute cornerness
+G = fspecial('gaussian', 9, 2); % To be experimented around
 alpha = 0.06; % Also to be experimented around
-threshold = 0.01; % Also to be experimented around
+threshold = 0.01; % Also to be ex
 C = (Ixx.*Iyy - Ixy.*Ixy) - alpha*(Ixx+Iyy).*(Ixx+Iyy); % det(A) - alpha*trace(A)^2
 
-% 5. Threshold on C to pick high cornerness
 [M, N] = size(C);
 C(1:cell_size,:) = 0;
 C(M-cell_size:M,:) = 0;
 C(:,1:cell_size) = 0;
 C(:,N-cell_size:N) = 0;
-thres_block = (C > threshold);
-C = C.*thres_block;
 
-% 6. Non-maximaa suppression to pick peaks
-maxC = colfilt(C, [cell_size, cell_size], 'sliding', @max);
-result = (C == maxC);
-C = C.*result;
-[y, x, confidence] = find(C);
+thres_block = (C > 
 
 end
 

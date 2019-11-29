@@ -53,13 +53,9 @@ function [features] = get_features(image, x, y, descriptor_window_image_width)
 cell_size = descriptor_window_image_width/4;
 features = double(zeros(length(x), descriptor_window_image_width));
 theta_range = -pi:pi/4:pi;
-[M N] = size(image);
-for p = 30:length(x)
-%     G = fspecial('gaussian', [descriptor_window_image_width/2, descriptor_window_image_width/2], descriptor_window_image_width/2);
-%     g_image = imfilter(image(y(p)-8:y(p)+7, x(p)-8:x(p)+7), G);
-%     image(y(p)-8:y(p)+7, x(p)-8:x(p)+7) = g_image;
+[M, N] = size(image);
+for p = 1:length(x)
     if (x(p)-8 > 1 && y(p)-8 > 1 && x(p)+7 < N && y(p)+7 < M)
-%     q = 1;
         cell_num = 1;
         for c1 = 1:4
             for c2 = 1:4
@@ -77,12 +73,6 @@ for p = 30:length(x)
                     end
                 end
                 
-                % Potential Gaussian filter on 4x4 mag values
-                mag = reshape(mag, [4,4]);
-                mag = imfilter(mag, fspecial('gaussian', [4,4], sqrt(descriptor_window_image_width/2)));
-                mag = reshape(mag, [1,16]);
-                %%%%%%
-                
                 feat_theta = zeros(8,1);
                 for t=1:length(theta_inds)
                     theta_val = theta_inds(t);
@@ -98,7 +88,6 @@ for p = 30:length(x)
         end
     end
 end
-features = features.^(0.8);
 
 %
 % You do not need to perform the interpolation in which each gradient
