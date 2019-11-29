@@ -51,6 +51,7 @@ function [features] = get_features(image, x, y, descriptor_window_image_width)
 %  (3) Each feature should be normalized to unit length
 
 cell_size = descriptor_window_image_width/4;
+cell = zeros(cell_size, cell_size);
 features = double(zeros(length(x), descriptor_window_image_width));
 theta_range = -pi:pi/4:pi;
 [M N] = size(image);
@@ -81,8 +82,6 @@ for p = 30:length(x)
                 mag = reshape(mag, [4,4]);
                 mag = imfilter(mag, fspecial('gaussian', [4,4], sqrt(descriptor_window_image_width/2)));
                 mag = reshape(mag, [1,16]);
-                %%%%%%
-                
                 feat_theta = zeros(8,1);
                 for t=1:length(theta_inds)
                     theta_val = theta_inds(t);
@@ -98,7 +97,6 @@ for p = 30:length(x)
         end
     end
 end
-features = features.^(0.8);
 
 %
 % You do not need to perform the interpolation in which each gradient

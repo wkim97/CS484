@@ -23,16 +23,17 @@
 
 function [matches, confidences] = match_features(features1, features2)
 
-% % Placeholder random matches and confidences.
+% Placeholder random matches and confidences.
 % num_features = min(size(features1, 1), size(features2,1));
 % matches = zeros(num_features, 2);
 % matches(:,1) = randperm(num_features); 
 % matches(:,2) = randperm(num_features);
+% confidences = rand(num_features,1);
 
 [N K] = size(features1);
 matches = zeros(N, 2);
 confidences = zeros(N, 1);
-threshold = 0.75;
+threshold = 0.9;
 
 neighbors = zeros(N, N);
 for i = 1:N
@@ -46,15 +47,19 @@ end
 % neighbors sorted based on features2 points
 % e.g. col1 = neighbors of 1st features2, col2 = neighbors of 2nd features2
 [neighbors, index] = sort(neighbors);
+ratios = zeros(1,N);
 for i = 1:N
     ratio = neighbors(1,i)/neighbors(2,i);
+    ratios(1,i) = ratio;
     if (ratio < threshold)
         matches(i,2) = i;
         matches(i,1) = index(1,i);
         confidences(i) = 1 - ratio;
     end
 end
+% a = matches;
 matches( ~any(matches,2), : ) = [];
+% b = matches;
 confidences( ~any(confidences,2), : ) = [];
 
 [confidences, sort_index] = sort(confidences, 'descend');

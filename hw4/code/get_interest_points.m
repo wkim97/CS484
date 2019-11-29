@@ -37,8 +37,8 @@ function [x, y, confidence, scale, orientation] = get_interest_points(image, des
 % of cornerness.
 
 % Placeholder that you can delete -- random points
-x = ceil(rand(500,1) * size(image,2));
-y = ceil(rand(500,1) * size(image,1));
+% x = ceil(rand(500,1) * size(image,2));
+% y = ceil(rand(500,1) * size(image,1));
 
 
 % After computing interest points, here's roughly how many we return
@@ -46,6 +46,17 @@ y = ceil(rand(500,1) * size(image,1));
 % - Notre Dame: ~1300 and ~1700
 % - Mount Rushmore: ~3500 and ~4500
 % - Episcopal Gaudi: ~1000 and ~9000
+
+filter_x = [1 0 -1; 2 0 -2; 1 0 -1];
+filter_y = [1 2 1; 0 0 0; -1 -2 -1];
+Ix = imfilter(image, filter_x);
+Iy = imfilter(image, filter_y);
+Ixx = imfilter(Ix, filter_x);
+Iyy = imfilter(Iy, filter_y);
+Ixy = imfilter(Ix, filter_y);
+
+G = fspecial('gaussian', 
+
 
 end
 
