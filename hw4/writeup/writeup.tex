@@ -59,6 +59,8 @@
 \usepackage{microtype}
 \usepackage{times}
 \usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{subcaption}
 
 % From https://ctan.org/pkg/matlab-prettifier
 \usepackage[numbered,framed]{matlab-prettifier}
@@ -93,58 +95,18 @@
   \item \textbf{Please make this document anonymous.}
 \end{itemize}
 
-\section*{In the beginning...}
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. See Equation~\ref{eq:one}.
-
-\begin{equation}
-a = b + c
-\label{eq:one}
-\end{equation}
-
-\section*{Interesting Implementation Detail}
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-My code snippet highlights an interesting point.
-\begin{lstlisting}[style=Matlab-editor]
-one = 1;
-two = one + one;
-if two == 2
-    disp( 'This computer is not broken.' );
-end
-\end{lstlisting}
-
-\section*{A Result}
-
+\section*{get$\_$interest$\_$points.m}
+For the function get$\_$interest$\_$points, I used a normal Harris corner detection method. I followed the algorithms below to implement Harris corner detection: 
 \begin{enumerate}
-    \item Result 1 was a total failure, because...
-    \item Result 2 (Figure~\ref{fig:result1}, left) was surprising, because...
-    \item Result 3 (Figure~\ref{fig:result1}, right) blew my socks off, because...
+	\item Compute image derivatives by applying sobel filters to image.
+	\item Compute M components as squares of derivatives by finding $I_x^2$, $I_y^2$, and $I_xI_y$.
+	\item Apply a Gaussian filter of size $[4,4]$ and width $2$ to each of $I_x^2$, $I_y^2$, and $I_xI_y$.
+	\item Compute cornerness $\text{C} = \text{det(M)} - \alpha \text{trace(M)}^2$.
+	\item Apply threshold on C to pick high cornerness.
+	\item Non-maxima suppression to pick peaks. I used function colfilt() to find maximum peaks.
 \end{enumerate}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=5cm]{placeholder.jpg}
-    \includegraphics[width=5cm]{placeholder.jpg}
-    \caption{\emph{Left:} My result was spectacular. \emph{Right:} Curious.}
-    \label{fig:result1}
-\end{figure}
+\section*{get$\_$descriptors.m}
 
-My results are summarized in Table~\ref{tab:table1}.
-
-\begin{table}[h]
-    \centering
-    \begin{tabular}{lr}
-        \toprule
-        Condition & Time (seconds) \\
-        \midrule
-        Test 1 & 1 \\
-        Test 2 & 1000 \\
-        \bottomrule
-    \end{tabular}
-    \caption{Stunning revelation about the efficiency of my code.}
-    \label{tab:table1}
-\end{table}
 
 \end{document}

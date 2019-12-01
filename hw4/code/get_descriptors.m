@@ -51,43 +51,81 @@ function [features] = get_features(image, x, y, descriptor_window_image_width)
 %  (3) Each feature should be normalized to unit length
 
 cell_size = descriptor_window_image_width/4;
+window_size = descriptor_window_image_width/2;
 features = double(zeros(length(x), descriptor_window_image_width));
 theta_range = -pi:pi/4:pi;
 [M, N] = size(image);
 for p = 1:length(x)
-    if (x(p)-8 > 1 && y(p)-8 > 1 && x(p)+7 < N && y(p)+7 < M)
-        cell_num = 1;
+    if (x(p)-window_size > 1 && y(p)-window_size > 1 && x(p)+window_size-1 < N && y(p)+window_size-1 < M)
+        
+%         % Finding maximum magnitude to apply feature orientation
+%         t = zeros(256,1);
+%         m = zeros(256,1);
+%         ind = 1;
+%         for a = x(p)-window_size:x(p)+window_size-1
+%             for b = y(p)-window_size:y(p)+window_size-1
+%                 x_g = image(b,a+1) - image(b,a-1);
+%                 y_g = image(b+1,a) - image(b-1,a);
+%                 t(ind) = atan2(y_g,x_g); % 16x1 theta values
+%                 m(ind) = sqrt(x_g^2 + y_g^2); % 16x1 magnitude values
+%                 ind = ind + 1;
+%             end
+%         end
+%         [~,t_ind] = histc(t,theta_range);
+%         f_t = zeros(8,1);
+%         for t=1:length(t_ind)
+%             t_val = t_ind(t);
+%             if (t_val == 0)
+%                 f_t(1) = f_t(1) + m(t);
+%             else
+%                 f_t(t_val) = f_t(t_val) + m(t);
+%             end
+%         end
+%         [~,max_theta_index] = max(f_t);
+%         max_theta = (max_theta_index-5)*45;
+        
         for c1 = 1:4
             for c2 = 1:4
                 theta = zeros(16,1);
                 mag = zeros(16,1);
                 index = 1;
-                for i = -8+cell_size*(c1-1) : -8+cell_size*c1-1
-                    for j = -8+cell_size*(c2-1) : -8+cell_size*c2-1
+                for i = cell_size*(c1-1)-window_size : cell_size*c1-1-window_size
+                    for j = cell_size*(c2-1)-window_size : cell_size*c2-1-window_size
                         x_grad = image(y(p)+i,x(p)+j+1) - image(y(p)+i,x(p)+j-1);
                         y_grad = image(y(p)+i+1,x(p)+j) - image(y(p)+i-1,x(p)+j);
-                        theta(index) = atan2(y_grad,x_grad); % 16x1 theta values
+                        theta(index) = atan2(y_grad,x_grad);
+%                         theta(index) = atan2(y_grad,x_grad) - max_theta; % 16x1 theta values
+%                         if (theta(index) < -pi)
+%                             theta(index) = theta(index) + 2*pi;
+%                         elseif (theta(index) > pi)
+%                             theta(index) = theta(index) - 2*pi;
+%                         end
                         mag(index) = sqrt(x_grad^2 + y_grad^2); % 16x1 magnitude values
-                        [~,theta_inds] = histc(theta,theta_range); % 16x1 theta indices
                         index = index+1;
                     end
                 end
-                
+                [~,theta_index] = histc(theta,theta_range);
                 feat_theta = zeros(8,1);
-                for t=1:length(theta_inds)
-                    theta_val = theta_inds(t);
+                for t=1:length(theta_index)
+                    theta_val = theta_index(t);
                     if (theta_val == 0)
                         feat_theta(1) = feat_theta(1) + mag(t);
                     else
                         feat_theta(theta_val) = feat_theta(theta_val) + mag(t);
                     end
                 end
-                features(p,8*(cell_num-1)+1:8*(cell_num)) = feat_theta;
-                cell_num = cell_num + 1;
+                features(p,window_size*(4*(c1-1)+c2-1)+1:window_size*(4*(c1-1)+c2)) = feat_theta;
             end
         end
     end
+    features(p,:) = features(p,:)/norm(features(p,:));
+    f = features(p,:);
+    f(f>0.2) = 0.2;
+    features(p,:) = f;
+    features(p,:) = features(p,:)/norm(features(p,:));
+    
 end
+
 
 %
 % You do not need to perform the interpolation in which each gradient

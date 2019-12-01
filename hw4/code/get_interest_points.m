@@ -61,7 +61,7 @@ Iyy = Iy.*Iy;
 Ixy = Ix.*Iy;
 
 % 3. Apply a Gaussian filter
-G = fspecial('gaussian', [5,5], 2); % To be experimented around
+G = fspecial('gaussian', [cell_size/2,cell_size/2], 2); % To be experimented around
 Ixx = imfilter(Ixx, G);
 Iyy = imfilter(Iyy, G);
 Ixy = imfilter(Ixy, G);
@@ -73,18 +73,14 @@ C = (Ixx.*Iyy - Ixy.*Ixy) - alpha*(Ixx+Iyy).*(Ixx+Iyy); % det(A) - alpha*trace(A
 
 % 5. Threshold on C to pick high cornerness
 [M, N] = size(C);
-C(1:cell_size,:) = 0;
-C(M-cell_size:M,:) = 0;
-C(:,1:cell_size) = 0;
-C(:,N-cell_size:N) = 0;
 thres_block = (C > threshold);
 C = C.*thres_block;
 
 % 6. Non-maximaa suppression to pick peaks
-maxC = colfilt(C, [cell_size, cell_size], 'sliding', @max);
+maxC = colfilt(C, [4, 4], 'sliding', @max);
 result = (C == maxC);
 C = C.*result;
-[y, x, confidence] = find(C);
+[y, x] = find(C);
 
 end
 

@@ -36,8 +36,8 @@ N = min(N1, N2);
 matches = zeros(N, 2);
 confidences = zeros(N, 1);
 threshold = 0.8;
-
 neighbors = zeros(N, N);
+
 for i = 1:N
     for j = 1:N
         % NxN matrix of all possible matches between all feature points
@@ -49,10 +49,10 @@ end
 % neighbors sorted based on features2 points
 % e.g. col1 = neighbors of 1st features2, col2 = neighbors of 2nd features2
 [neighbors, index] = sort(neighbors);
-ratios = zeros(1,N);
+ratios = zeros(N);
 for i = 1:N
     ratio = neighbors(1,i)/neighbors(2,i);
-    ratios(1,i) = ratio;
+    ratios(i) = ratio;
     if (ratio < threshold)
         matches(i,2) = i;
         matches(i,1) = index(1,i);
