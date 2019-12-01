@@ -64,31 +64,36 @@ theta_range = -pi:pi/4:pi;
 for p = 1:length(x)
     if (x(p)-window_size > 1 && y(p)-window_size > 1 && x(p)+window_size-1 < N && y(p)+window_size-1 < M)
         
-%         % Finding maximum magnitude to apply feature orientation
-%         t = zeros(256,1);
-%         m = zeros(256,1);
-%         ind = 1;
-%         for a = x(p)-window_size:x(p)+window_size-1
-%             for b = y(p)-window_size:y(p)+window_size-1
-%                 x_g = image(b,a+1) - image(b,a-1);
-%                 y_g = image(b+1,a) - image(b-1,a);
-%                 t(ind) = atan2(y_g,x_g); % 16x1 theta values
-%                 m(ind) = sqrt(x_g^2 + y_g^2); % 16x1 magnitude values
-%                 ind = ind + 1;
-%             end
-%         end
-%         [~,t_ind] = histc(t,theta_range);
-%         f_t = zeros(8,1);
-%         for t=1:length(t_ind)
-%             t_val = t_ind(t);
-%             if (t_val == 0)
-%                 f_t(1) = f_t(1) + m(t);
-%             else
-%                 f_t(t_val) = f_t(t_val) + m(t);
-%             end
-%         end
-%         [~,max_theta_index] = max(f_t);
-%         max_theta = (max_theta_index-5)*45;
+        %%%%%%%%%%%%%%%%%%%%% Features Orientation EC %%%%%%%%%%%%%%%%%%%%%
+        % Finding maximum magnitude to apply feature orientation
+        t = zeros(256,1);
+        m = zeros(256,1);
+        ind = 1;
+%         g_filter = fspecial('gaussian', [descriptor_window_image_width+2,descriptor_window_image_width+2], descriptor_window_image_width/6);
+        window = image(y(p)-window_size-1:y(p)+window_size, x(p)-window_size-1:x(p)+window_size);
+%         window = window.*g_filter;
+        for a = 2:17
+            for b =  2:17
+                x_g = window(b,a+1) - window(b,a-1);
+                y_g = window(b+1,a) - window(b-1,a);
+                t(ind) = atan2(y_g,x_g); % 16x1 theta values
+                m(ind) = sqrt(x_g^2 + y_g^2); % 16x1 magnitude values
+                ind = ind + 1;
+            end
+        end
+        [~,t_ind] = histc(t,theta_range);
+        f_t = zeros(8,1);
+        for t=1:length(t_ind)
+            t_val = t_ind(t);
+            if (t_val == 0)
+                f_t(1) = f_t(1) + m(t);
+            else
+                f_t(t_val) = f_t(t_val) + m(t);
+            end
+        end
+        [~,max_theta_index] = max(f_t);
+        max_theta = (max_theta_index-5)*(pi/4);
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
         for c1 = 1:4
             for c2 = 1:4
@@ -99,13 +104,16 @@ for p = 1:length(x)
                     for j = cell_size*(c2-1)-window_size : cell_size*c2-1-window_size
                         x_grad = image(y(p)+i,x(p)+j+1) - image(y(p)+i,x(p)+j-1);
                         y_grad = image(y(p)+i+1,x(p)+j) - image(y(p)+i-1,x(p)+j);
-                        theta(index) = atan2(y_grad,x_grad);
-%                         theta(index) = atan2(y_grad,x_grad) - max_theta; % 16x1 theta values
-%                         if (theta(index) < -pi)
-%                             theta(index) = theta(index) + 2*pi;
-%                         elseif (theta(index) > pi)
-%                             theta(index) = theta(index) - 2*pi;
-%                         end
+                        
+%                         theta(index) = atan2(y_grad,x_grad);
+
+                        theta(index) = atan2(y_grad,x_grad) - max_theta; % 16x1 theta values
+                        if (theta(index) < -pi)
+                            theta(index) = theta(index) + 2*pi;
+                        elseif (theta(index) > pi)
+                            theta(index) = theta(index) - 2*pi;
+                        end
+                        
                         mag(index) = sqrt(x_grad^2 + y_grad^2); % 16x1 magnitude values
                         index = index+1;
                     end
@@ -124,12 +132,15 @@ for p = 1:length(x)
             end
         end
     end
-    features(p,:) = features(p,:)/norm(features(p,:));
+    if (norm(features(p,:)) ~= 0)
+        features(p,:) = features(p,:)/norm(features(p,:));
+    end
     f = features(p,:);
     f(f>0.2) = 0.2;
     features(p,:) = f;
-    features(p,:) = features(p,:)/norm(features(p,:));
-    
+    if (norm(features(p,:)) ~= 0)
+        features(p,:) = features(p,:)/norm(features(p,:));
+    end
 end
 
 

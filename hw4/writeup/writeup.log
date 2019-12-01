@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.10.6)  1 DEC 2019 17:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.10.6)  1 DEC 2019 21:55
 entering extended mode
 **./writeup.tex
 (writeup.tex
@@ -821,59 +821,119 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 99.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 99.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 111.
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--112
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 113--114
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
 
  []
 
+<../code/eval_simple_ND.png, id=3, 614.295pt x 411.4572pt>
+File: ../code/eval_simple_ND.png Graphic file (type png)
+<use ../code/eval_simple_ND.png>
+Package pdftex.def Info: ../code/eval_simple_ND.png  used on input line 119.
+(pdftex.def)             Requested size: 152.27682pt x 101.99763pt.
+<../code/eval_simple_MR.png, id=4, 614.295pt x 411.4572pt>
+File: ../code/eval_simple_MR.png Graphic file (type png)
+<use ../code/eval_simple_MR.png>
+Package pdftex.def Info: ../code/eval_simple_MR.png  used on input line 124.
+(pdftex.def)             Requested size: 152.27682pt x 101.99763pt.
+<../code/eval_simple_EG.png, id=5, 614.295pt x 411.4572pt>
+File: ../code/eval_simple_EG.png Graphic file (type png)
+<use ../code/eval_simple_EG.png>
+Package pdftex.def Info: ../code/eval_simple_EG.png  used on input line 129.
+(pdftex.def)             Requested size: 152.27682pt x 101.99763pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 115--116
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
 
  []
 
 [1{C:/Users/김우재/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 ]
-<../code/eval_ND.png, id=24, 614.295pt x 411.4572pt>
-File: ../code/eval_ND.png Graphic file (type png)
-<use ../code/eval_ND.png>
-Package pdftex.def Info: ../code/eval_ND.png  used on input line 121.
-(pdftex.def)             Requested size: 152.27682pt x 101.99763pt.
-<../code/eval_MR.png, id=25, 614.295pt x 411.4572pt>
-File: ../code/eval_MR.png Graphic file (type png)
-<use ../code/eval_MR.png>
-Package pdftex.def Info: ../code/eval_MR.png  used on input line 126.
-(pdftex.def)             Requested size: 152.27682pt x 101.99763pt.
-<../code/eval_EG.png, id=26, 614.295pt x 411.4572pt>
-File: ../code/eval_EG.png Graphic file (type png)
-<use ../code/eval_EG.png>
-Package pdftex.def Info: ../code/eval_EG.png  used on input line 131.
-(pdftex.def)             Requested size: 152.27682pt x 101.99763pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 140.
+Underfull \hbox (badness 10000) in paragraph at lines 138--139
 
-[2 <../code/eval_ND.png (PNG copy)> <../code/eval_MR.png (PNG copy)> <../code/e
-val_EG.png (PNG copy)>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 140.
+ []
+
+<../code/eval_sift_ND.png, id=28, 614.295pt x 411.4572pt>
+File: ../code/eval_sift_ND.png Graphic file (type png)
+<use ../code/eval_sift_ND.png>
+Package pdftex.def Info: ../code/eval_sift_ND.png  used on input line 145.
+(pdftex.def)             Requested size: 152.27682pt x 101.99763pt.
+<../code/eval_sift_MR.png, id=29, 614.295pt x 411.4572pt>
+File: ../code/eval_sift_MR.png Graphic file (type png)
+<use ../code/eval_sift_MR.png>
+Package pdftex.def Info: ../code/eval_sift_MR.png  used on input line 150.
+(pdftex.def)             Requested size: 152.27682pt x 101.99763pt.
+<../code/eval_sift_EG.png, id=30, 614.295pt x 411.4572pt>
+File: ../code/eval_sift_EG.png Graphic file (type png)
+<use ../code/eval_sift_EG.png>
+Package pdftex.def Info: ../code/eval_sift_EG.png  used on input line 155.
+(pdftex.def)             Requested size: 152.27682pt x 101.99763pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2 <../code/eval_simple_ND.png (PNG copy)> <../code/eval_simple_MR.png (PNG cop
+y)> <../code/eval_simple_EG.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 165--166
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 167--168
+
+ []
+
+<../code/eval_orientation_ND.png, id=37, 614.295pt x 411.4572pt>
+File: ../code/eval_orientation_ND.png Graphic file (type png)
+<use ../code/eval_orientation_ND.png>
+Package pdftex.def Info: ../code/eval_orientation_ND.png  used on input line 17
+4.
+(pdftex.def)             Requested size: 152.27682pt x 101.99763pt.
+<../code/eval_orientation_MR.png, id=38, 614.295pt x 411.4572pt>
+File: ../code/eval_orientation_MR.png Graphic file (type png)
+<use ../code/eval_orientation_MR.png>
+Package pdftex.def Info: ../code/eval_orientation_MR.png  used on input line 17
+9.
+(pdftex.def)             Requested size: 152.27682pt x 101.99763pt.
+<../code/eval_orientation_EG.png, id=39, 614.295pt x 411.4572pt>
+File: ../code/eval_orientation_EG.png Graphic file (type png)
+<use ../code/eval_orientation_EG.png>
+Package pdftex.def Info: ../code/eval_orientation_EG.png  used on input line 18
+4.
+(pdftex.def)             Requested size: 152.27682pt x 101.99763pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[3 <../code/eval_sift_ND.png (PNG copy)> <../code/eval_sift_MR.png (PNG copy)> 
+<../code/eval_sift_EG.png (PNG copy)>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 214.
+ [4 <../code/eval_orientation_ND.png (PNG copy)> <../code/eval_orientation_MR.p
+ng (PNG copy)> <../code/eval_orientation_EG.png (PNG copy)>] [5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 214.
  (writeup.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 140.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 140.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 214.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 214.
 Package rerunfilecheck Info: File `writeup.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 140.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 214.
  ) 
 Here is how much of TeX's memory you used:
- 12765 strings out of 492895
- 196257 string characters out of 3121867
- 342931 words of memory out of 3000000
- 16450 multiletter control sequences out of 15000+200000
- 22845 words of font info for 84 fonts, out of 3000000 for 9000
+ 12822 strings out of 492895
+ 197544 string characters out of 3121867
+ 343931 words of memory out of 3000000
+ 16478 multiletter control sequences out of 15000+200000
+ 24947 words of font info for 94 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,11n,43p,986b,535s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,11n,43p,986b,540s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r
 .enc}<C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
 msfonts/cm/cmmi10.pfb><C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/fon
@@ -884,9 +944,9 @@ ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/
 10.pfb><C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/ti
 mes/utmb8a.pfb><C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/fonts/type
 1/urw/times/utmr8a.pfb>
-Output written on writeup.pdf (2 pages, 2301546 bytes).
+Output written on writeup.pdf (5 pages, 6760897 bytes).
 PDF statistics:
- 61 PDF objects out of 1000 (max. 8388607)
- 14 named destinations out of 1000 (max. 500000)
- 18448 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 87 PDF objects out of 1000 (max. 8388607)
+ 24 named destinations out of 1000 (max. 500000)
+ 18990 words of extra memory for PDF output out of 20736 (max. 10000000)
 

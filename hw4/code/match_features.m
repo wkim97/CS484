@@ -51,22 +51,25 @@ end
 % neighbors sorted based on features2 points
 % e.g. col1 = neighbors of 1st features2, col2 = neighbors of 2nd features2
 [neighbors, index] = sort(neighbors);
-
-ratios = zeros(N);
-for i = 1:N
-    ratio = neighbors(1,i)/neighbors(2,i);
-    ratios(i) = ratio;
-    if (ratio < threshold)
-        matches(i,2) = i;
-        matches(i,1) = index(1,i);
-        confidences(i) = 1/ratio;
-    end
-end
+n1 = neighbors(1,:);
+n1(n1==0) = 100;
+n2 = neighbors(2,:);
+n2(n2==0) = 10;
+ratios = n1./n2;
+ratios(ratios==10) = 0;
+ratios = ratios'; % ratios = Nx1
+thres_ratio = double((ratios < threshold & ratios > 0));
+match_ratio = ratios.*thres_ratio;
+temp = linspace(1,N,N)';
+matches(:,1) = index(1,:)'.*thres_ratio;
+matches(:,2) = temp.*thres_ratio;
+match_ratio(match_ratio==0) = 100;
+confidences = 1./match_ratio;
 
 % a = matches;
 matches( ~any(matches,2), : ) = [];
 % b = matches;
-confidences( ~any(confidences,2), : ) = [];
+confidences(confidences==0.01) = [];
 
 [confidences, sort_index] = sort(confidences, 'descend');
 matches = matches(sort_index,:);
