@@ -72,7 +72,6 @@ threshold = 0.01; % Also to be experimented around
 C = (Ixx.*Iyy - Ixy.*Ixy) - alpha*(Ixx+Iyy).*(Ixx+Iyy); % det(A) - alpha*trace(A)^2
 
 % 5. Threshold on C to pick high cornerness
-[M, N] = size(C);
 thres_block = (C > threshold);
 C = C.*thres_block;
 

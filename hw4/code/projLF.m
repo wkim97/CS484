@@ -83,7 +83,7 @@ if ~cheatInterestPoints
     [x1, y1] = get_interest_points(image1, descriptor_window_image_width);
     [x2, y2] = get_interest_points(image2, descriptor_window_image_width);
 else
-    % Use cheat_interest_points only for development and debugging!
+    % Use cheat_inter5est_points only for development and debugging!
     [x1, y1, x2, y2] = cheat_interest_points(eval_file, scale_factor, image1, image2, descriptor_window_image_width);
 end
 

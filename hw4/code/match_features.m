@@ -30,8 +30,8 @@ function [matches, confidences] = match_features(features1, features2)
 % matches(:,2) = randperm(num_features);
 % confidences = rand(num_features,1);
 
-[N1 K1] = size(features1);
-[N2 K2] = size(features2);
+[N1, ~] = size(features1);
+[N2, ~] = size(features2);
 N = min(N1, N2);
 matches = zeros(N, 2);
 confidences = zeros(N, 1);
