@@ -61,6 +61,7 @@
 \usepackage{booktabs}
 \usepackage{amsmath}
 \usepackage{subcaption}
+\usepackage{wrapfig}
 
 % From https://ctan.org/pkg/matlab-prettifier
 \usepackage[numbered,framed]{matlab-prettifier}
@@ -107,6 +108,33 @@ For the function get$\_$interest$\_$points, I used a normal Harris corner detect
 \end{enumerate}
 
 \section*{get$\_$descriptors.m}
+When using normalized patches, for Notre Dame, the accuracy on all points was 73.95$\%$ for 215 points, and 83$\%$ for top 100 points. For Mount Rushmore, the accruacy on all points was 84.5$\%$ for 129 submitted poitns, and 92$\%$ for top 100 points. For Gaudi's Episcopal Palace, the accuracy on all points was 12.5$\%$ for 8 points, and 1$\%$ for top 100 points. \\
 
+This performance generally increased by implementing SIFT method. For Notre Dame, the accuracy on all points was 90.79$\%$ for 228 points, and 100$\%$ for top 100 points. For Mount Rushmore, the accruacy on all points was 98.5$\%$ for 133 submitted poitns, and 99$\%$ for top 100 points. For Gaudi's Episcopal Palace, the performance was worse. The accuracy on all points was 0$\%$ for 2 points, and 0$\%$ for top 100 points. \\
+
+For SIFT, I implemented N x 128 features matrix, where N is the number of feature points. I divided 16 x 16 pixel window into 4 x 4 cells, with each cell consisting of 8-directional histogram. After finding features descriptors, I normalized each of the descriptor. Then, I capped all magnitudes higher than 0.2 to 0.2, after which I normalized the descriptor again. \\
+
+Figures below show the results obtained for the three images - Notre Dame, Mount Rushmore, and Episcopal Gaudi: 
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.4\linewidth}
+		\includegraphics[width=\linewidth]{../code/eval_ND.png}
+		\caption{Notre Dame}
+	\end{subfigure} \\
+	% 
+	\begin{subfigure}{0.4\linewidth}
+		\includegraphics[width=\linewidth]{../code/eval_MR.png}
+		\caption{Mount Rushmore}
+	\end{subfigure}
+	%
+	\begin{subfigure}{0.4\linewidth}
+		\includegraphics[width=\linewidth]{../code/eval_EG.png}
+		\caption{Episcopal Gaudi}
+	\end{subfigure}
+	%
+\end{figure}
+
+\section*{match$\_$features.m}
+I used NNDR test to implement feature matching. I calculated Euclidean distance between all possible combinations of feature points from the two images. Then, I sorted the matrix to find smallest distance and the next smallest distance. Taking quotient of those two numbers gave me NNDR, which I used to determine if that feature point is a valid match by comparing the ratio with the threshold. 
 
 \end{document}

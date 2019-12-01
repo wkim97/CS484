@@ -24,25 +24,22 @@ function [features] = get_features(image, x, y, descriptor_window_image_width)
 % (See Szeliski 4.1.2 or the original publications at
 % http://www.cs.ubc.ca/~lowe/keypoints/)
 
-% % 16 x 16 patch
-% [M, N] = size(image);
-% features = double(zeros(length(x), 128));
-% for p = 1:length(x)
-%     if (x(p)-8 > 1 && y(p)-8 > 1 && x(p)+7 < N && y(p)+7 < M)
-%         q = 1;
-%         for i = -8:7
-%             for j = -8:7
-%                 features(p,q) = image(y(p)+j,x(p)+i);
-%     %             image(y(p)+j, x(p)+i)
-%     %             features(p,q)
-%                 q = q + 1;
-%             end
-%         end
-%     %     features(p,:)
-%         features(p,:) = features(p,:)/norm(features(p,:),2);
-%     %     features(p,:)
-%     end
-% end
+% 16 x 16 patch
+features = double(zeros(length(x), 128));
+for p = 1:length(x)
+    q = 1;
+    for i = -8:7
+        for j = -8:7
+            features(p,q) = image(y(p)+j,x(p)+i);
+%             image(y(p)+j, x(p)+i)
+%             features(p,q)
+            q = q + 1;
+        end
+    end
+%     features(p,:)
+    features(p,:) = features(p,:)/norm(features(p,:),2);
+%     features(p,:)
+end
 
 % Your implementation does not need to exactly match the SIFT reference.
 % Here are the key properties your (baseline) descriptor should have:

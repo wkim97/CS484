@@ -51,7 +51,6 @@ end
 % neighbors sorted based on features2 points
 % e.g. col1 = neighbors of 1st features2, col2 = neighbors of 2nd features2
 [neighbors, index] = sort(neighbors);
-
 ratios = zeros(N);
 for i = 1:N
     ratio = neighbors(1,i)/neighbors(2,i);
@@ -62,6 +61,8 @@ for i = 1:N
         confidences(i) = 1/ratio;
     end
 end
+
+ratios = neighbors(1,:)./neighbors(2,:);
 
 % a = matches;
 matches( ~any(matches,2), : ) = [];
