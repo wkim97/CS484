@@ -35,3 +35,17 @@ function image_feats = get_tiny_images(image_paths)
 
 % Suggested functions: imread, imresize
 
+[N,~] = size(image_paths);
+image_feats = zeros(N,256);
+for i = 1:N
+    image_path = image_paths{i};
+    image = imread(image_path);
+    resized_image = double(imresize(image, [16,16]));
+    resized_image = resized_image';
+    resized_image = resized_image(:)';
+    resized_image = resized_image - mean(resized_image);
+    resized_image = resized_image ./ norm(resized_image);
+    image_feats(i,:) = resized_image;
+end
+end
+

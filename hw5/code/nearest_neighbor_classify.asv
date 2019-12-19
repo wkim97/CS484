@@ -23,26 +23,14 @@ function predicted_categories = nearest_neighbor_classify(train_image_feats, tra
 %   [Y,I] = SORT(X) if you're going to be reasoning about many nearest
 %   neighbors 
 
-K = 15;
 [M,~] = size(test_image_feats);
-[N,~] = size(train_image_feats);
-predicted_categories = cell(M,1);
+[N,~] = size(training_image_feats);
+predicted_categories = zeros(M,1);
 for i=1:M
-    labels = train_labels;
     dist = zeros(N,1);
     test_image = test_image_feats(i,:);
-    % Euclidean distance between test feature and training features
-    dist = pdist2(train_image_feats, test_image);
-    [dist,ind] = sort(dist);
-    l = labels;
-    labels = labels(ind);
-    candidate_labels = labels(1:K);
-    label = string(mode(categorical(candidate_labels)));
-    predicted_categories{i} = label;
-end
-end
-
-        
+    dist = pdist2(training_image_feats, test_image);
+    [dist, ind] = sort(dist);
     
 
 
