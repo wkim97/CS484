@@ -35,14 +35,8 @@ for i =1:N
     [~,hog_size] = size(hog);
     num_blocks = hog_size / 36;
     for b = 1:num_blocks
-        feature = hog(36*(b-1)+1:36*b);
-        dist = pdist2(vocab, feature);
-        [dist, ind] = sort(dist);
-        image_feats(i,ind(1)) = image_feats(i,ind(1)) + 1;
+        img_features = [img_features; hog(36*(b-1)+1:36*b)];
     end
-    image_feats(i,:) = image_feats(i,:) ./ norm(image_feats(i,:));
-end
-end
 
 
 
