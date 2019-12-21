@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.10.6)  14 DEC 2019 16:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.10.6)  21 DEC 2019 15:46
 entering extended mode
 **./writeup.tex
 (writeup.tex
@@ -343,6 +343,106 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \@lastruleclass=\count116
 \@thisrulewidth=\dimen133
 )
+("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsmat
+h.sty"
+Package: amsmath 2018/12/01 v2.17b AMS math features
+\@mathmargin=\skip61
+
+For additional information on amsmath, use the `?' option.
+
+("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amstex
+t.sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsgen
+.sty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks19
+\ex@=\dimen134
+))
+("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsbsy
+.sty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen135
+)
+("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsopn
+.sty"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count117
+LaTeX Info: Redefining \frac on input line 223.
+\uproot@=\count118
+\leftroot@=\count119
+LaTeX Info: Redefining \overline on input line 385.
+\classnum@=\count120
+\DOTSCASE@=\count121
+LaTeX Info: Redefining \ldots on input line 482.
+LaTeX Info: Redefining \dots on input line 485.
+LaTeX Info: Redefining \cdots on input line 606.
+\Mathstrutbox@=\box31
+\strutbox@=\box32
+\big@size=\dimen136
+LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
+\macc@depth=\count122
+\c@MaxMatrixCols=\count123
+\dotsspace@=\muskip11
+\c@parentequation=\count124
+\dspbrk@lvl=\count125
+\tag@help=\toks20
+\row@=\count126
+\column@=\count127
+\maxfields@=\count128
+\andhelp@=\toks21
+\eqnshift@=\dimen137
+\alignsep@=\dimen138
+\tagshift@=\dimen139
+\tagwidth@=\dimen140
+\totwidth@=\dimen141
+\lineht@=\dimen142
+\@envbody=\toks22
+\multlinegap=\skip62
+\multlinetaggap=\skip63
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2844.
+LaTeX Info: Redefining \] on input line 2845.
+)
+("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\subcap
+tion.sty"
+Package: subcaption 2019/09/01 v1.3a Sub-captions (AR)
+
+("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\captio
+n.sty"
+Package: caption 2019/09/01 v3.3d Customizing captions (AR)
+
+("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\captio
+n3.sty"
+Package: caption3 2019/09/01 v1.8d caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 64.
+\captionmargin=\dimen143
+\captionmargin@=\dimen144
+\captionwidth=\dimen145
+\caption@tempdima=\dimen146
+\caption@indent=\dimen147
+\caption@parindent=\dimen148
+\caption@hangindent=\dimen149
+)
+\c@caption@flags=\count129
+\c@ContinuedFloat=\count130
+Package caption Info: hyperref package is loaded.
+)
+\c@subfigure=\count131
+\c@subtable=\count132
+)
+("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/wrapfig\wrapfi
+g.sty"
+\wrapoverhang=\dimen150
+\WF@size=\dimen151
+\c@WF@wrappedlines=\count133
+\WF@box=\box33
+\WF@everypar=\toks24
+Package: wrapfig 2003/01/31  v 3.6
+)
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/matlab-prettif
 ier\matlab-prettifier.sty"
 Package: matlab-prettifier 2014/06/19 v0.3 A package for prettyprinting Matlab 
@@ -529,71 +629,71 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\listi
 ngs.sty"
-\lst@mode=\count117
-\lst@gtempboxa=\box31
-\lst@token=\toks19
-\lst@length=\count118
-\lst@currlwidth=\dimen134
-\lst@column=\count119
-\lst@pos=\count120
-\lst@lostspace=\dimen135
-\lst@width=\dimen136
-\lst@newlines=\count121
-\lst@lineno=\count122
-\lst@maxwidth=\dimen137
+\lst@mode=\count134
+\lst@gtempboxa=\box34
+\lst@token=\toks25
+\lst@length=\count135
+\lst@currlwidth=\dimen152
+\lst@column=\count136
+\lst@pos=\count137
+\lst@lostspace=\dimen153
+\lst@width=\dimen154
+\lst@newlines=\count138
+\lst@lineno=\count139
+\lst@maxwidth=\dimen155
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\lstmi
 sc.sty"
 File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
-\c@lstnumber=\count123
-\lst@skipnumbers=\count124
-\lst@framebox=\box32
+\c@lstnumber=\count140
+\lst@skipnumbers=\count141
+\lst@framebox=\box35
 )
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\listi
 ngs.cfg"
 File: listings.cfg 2019/09/10 1.8c listings configuration
 ))
 Package: listings 2019/09/10 1.8c (Carsten Heinz)
-\netBracketCount@mlpr=\count125
-\blkLvl@mlpr=\count126
-\blkLvlAtClassdef@mlpr=\count127
-\emHeight@mlpr=\skip61
-\jayDepth@mlpr=\skip62
-\sectionRuleOffset@mlpr=\skip63
-\toks@mlpr=\toks20
+\netBracketCount@mlpr=\count142
+\blkLvl@mlpr=\count143
+\blkLvlAtClassdef@mlpr=\count144
+\emHeight@mlpr=\skip64
+\jayDepth@mlpr=\skip65
+\sectionRuleOffset@mlpr=\skip66
+\toks@mlpr=\toks26
 ) (writeup.aux)
 \openout1 = `writeup.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 34.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 85.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 85.
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ts1cmr.fd
 "
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 34.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 85.
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ot1ptm.
 fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
-\AtBeginShipoutBox=\box33
-Package hyperref Info: Link coloring ON on input line 34.
+\AtBeginShipoutBox=\box36
+Package hyperref Info: Link coloring ON on input line 85.
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\namer
 ef.sty"
@@ -603,11 +703,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 titlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count128
+\c@section@level=\count145
 )
-LaTeX Info: Redefining \ref on input line 34.
-LaTeX Info: Redefining \pageref on input line 34.
-LaTeX Info: Redefining \nameref on input line 34.
+LaTeX Info: Redefining \ref on input line 85.
+LaTeX Info: Redefining \pageref on input line 85.
+LaTeX Info: Redefining \nameref on input line 85.
  (writeup.out) (writeup.out)
 \@outlinefile=\write3
 \openout3 = `writeup.out'.
@@ -651,17 +751,17 @@ LaTeX Info: Redefining \nameref on input line 34.
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\su
 pp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count129
-\scratchdimen=\dimen138
-\scratchbox=\box34
-\nofMPsegments=\count130
-\nofMParguments=\count131
-\everyMPshowfont=\toks21
-\MPscratchCnt=\count132
-\MPscratchDim=\dimen139
-\MPnumerator=\count133
-\makeMPintoPDFobject=\count134
-\everyMPtoPDFconversion=\toks22
+\scratchcounter=\count146
+\scratchdimen=\dimen156
+\scratchbox=\box37
+\nofMPsegments=\count147
+\nofMParguments=\count148
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count149
+\MPscratchDim=\dimen157
+\MPnumerator=\count150
+\makeMPintoPDFobject=\count151
+\everyMPtoPDFconversion=\toks28
 )
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epsto
 pdf-base.sty"
@@ -678,7 +778,7 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-LaTeX Info: Redefining \microtypecontext on input line 34.
+LaTeX Info: Redefining \microtypecontext on input line 85.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -693,50 +793,104 @@ Package microtype Info: No adjustment of character kerning.
 tm.cfg"
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-\c@lstlisting=\count135
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: listings package is loaded.
+Package caption Info: wrapfig package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count152
 
 ("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/microtype\mt-c
 mr.cfg"
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 36.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 36.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 36.
-
 
 LaTeX Warning: No \author given.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 40.
-[1{C:/Users/김우재/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 90.
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 92.
+
+("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ts1ptm.
+fd"
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 97.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 101.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 102.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 102.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 103.
+
+
+("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ot1pcr.
+fd"
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `pcr' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 110.
+
+
+("C:\Users\김우재\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ts1pcr.
+fd"
+File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `pcr' (encoding: TS1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [1{C:/Users/김우재/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 40.
+Underfull \hbox (badness 10000) in paragraph at lines 140--141
 
-(writeup.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 40.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 40.
+ []
+
+[2] [3] [4]
+<../results/bog_svm.png, id=118, 526.96875pt x 395.22656pt>
+File: ../results/bog_svm.png Graphic file (type png)
+<use ../results/bog_svm.png>
+Package pdftex.def Info: ../results/bog_svm.png  used on input line 239.
+(pdftex.def)             Requested size: 380.69788pt x 285.53383pt.
+<../results/table_bog_svm.png, id=119, 2678.50688pt x 4077.9853pt>
+File: ../results/table_bog_svm.png Graphic file (type png)
+<use ../results/table_bog_svm.png>
+Package pdftex.def Info: ../results/table_bog_svm.png  used on input line 245.
+(pdftex.def)             Requested size: 380.69788pt x 579.56334pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 249.
+ [5 <../results/bog_svm.png (PNG copy)>] [6 <../results/table_bog_svm.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 249.
+ (writeup.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 249.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 249.
 Package rerunfilecheck Info: File `writeup.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 40.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 249.
  ) 
 Here is how much of TeX's memory you used:
- 10848 strings out of 492895
- 165701 string characters out of 3121867
- 305202 words of memory out of 3000000
- 14629 multiletter control sequences out of 15000+200000
- 10697 words of font info for 35 fonts, out of 3000000 for 9000
+ 13288 strings out of 492895
+ 201890 string characters out of 3121867
+ 432004 words of memory out of 3000000
+ 16886 multiletter control sequences out of 15000+200000
+ 21973 words of font info for 76 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 32i,11n,43p,986b,346s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,12n,56p,986b,1992s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r
-.enc}<C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/time
-s/utmr8a.pfb>
-Output written on writeup.pdf (1 page, 12392 bytes).
+.enc}<C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmmi10.pfb><C:/Users/김우재/AppData/Local/Programs/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/김우재/AppData/Local/Progra
+ms/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/김우재/AppData/Lo
+cal/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/김우재/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
+Output written on writeup.pdf (6 pages, 6713694 bytes).
 PDF statistics:
- 16 PDF objects out of 1000 (max. 8388607)
- 2 named destinations out of 1000 (max. 500000)
- 8193 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 173 PDF objects out of 1000 (max. 8388607)
+ 103 named destinations out of 1000 (max. 500000)
+ 14347 words of extra memory for PDF output out of 14400 (max. 10000000)
 

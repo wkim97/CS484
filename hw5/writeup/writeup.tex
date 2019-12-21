@@ -50,8 +50,8 @@
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[colorlinks = true,
-            linkcolor = blue,
-            urlcolor  = blue]{hyperref}
+linkcolor = blue,
+urlcolor  = blue]{hyperref}
 \usepackage[a4paper,margin=1.5in]{geometry}
 \usepackage{stackengine,graphicx}
 \usepackage{fancyhdr}
@@ -59,6 +59,10 @@
 \usepackage{microtype}
 \usepackage{times}
 \usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+
 
 % From https://ctan.org/pkg/matlab-prettifier
 \usepackage[numbered,framed]{matlab-prettifier}
@@ -93,58 +97,153 @@
   \item \textbf{Please make this document anonymous.}
 \end{itemize}
 
-\section*{In the beginning...}
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. See Equation~\ref{eq:one}.
-
-\begin{equation}
-a = b + c
-\label{eq:one}
-\end{equation}
-
-\section*{Interesting Implementation Detail}
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-My code snippet highlights an interesting point.
+\section*{Implementation and Algorithms}
+\subsection*{Tiny Images}
+The goal of the function \textbf{get$\_$tiny$\_$images.m} is to produce a feature representation for an image using a "tiny image" method. This method simply resizes the image to a smaller one. I first resized the image into 16x16 pixels. Then, I zero-centered the image and normalized it by dividing it by standard deviation of the image. The code snippet is shown below:
 \begin{lstlisting}[style=Matlab-editor]
-one = 1;
-two = one + one;
-if two == 2
-    disp( 'This computer is not broken.' );
+[N,~] = size(image_paths);
+image_feats = zeros(N,256);
+for i = 1:N
+    image_path = image_paths{i};
+    image = imread(image_path);
+    resized_image = double(imresize(image, [16,16]));
+    resized_image = resized_image';
+    resized_image = resized_image(:)';
+    resized_image = resized_image - mean(resized_image);
+    resized_image = resized_image ./ norm(resized_image);
+    image_feats(i,:) = resized_image;
 end
 \end{lstlisting}
 
-\section*{A Result}
+\subsection*{Nearest Neighbor}
+The goal of the function \textbf{nearest$\_$neighbor$\_$classify.m} is to produce a classifier by using nearest neighbor method. It takes the training image features, training labels, and test image features as parameters and find the distance between all the features between training image features and test image features. Then, it selects K (I chose 15 for K) nearest points and selects the most frequently occurring label as the test feature's label. The code snippet is shown below:
+\begin{lstlisting}[style=Matlab-editor]
+K = 15;
+[M,~] = size(test_image_feats);
+[N,~] = size(train_image_feats);
+predicted_categories = cell(M,1);
+for i=1:M
+    labels = train_labels;
+    dist = zeros(N,1);
+    test_image = test_image_feats(i,:);
+    dist = pdist2(train_image_feats, test_image);
+    [dist,ind] = sort(dist);
+    l = labels;
+    labels = labels(ind);
+    candidate_labels = labels(1:K);
+    label = string(mode(categorical(candidate_labels)));
+    predicted_categories{i} = label;
+end
+\end{lstlisting}
 
-\begin{enumerate}
-    \item Result 1 was a total failure, because...
-    \item Result 2 (Figure~\ref{fig:result1}, left) was surprising, because...
-    \item Result 3 (Figure~\ref{fig:result1}, right) blew my socks off, because...
-\end{enumerate}
+\subsection*{Bag of Words}
+Bag of words method is a feature representation method that extracts features from images and stores them into a bag. \\
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=5cm]{placeholder.jpg}
-    \includegraphics[width=5cm]{placeholder.jpg}
-    \caption{\emph{Left:} My result was spectacular. \emph{Right:} Curious.}
-    \label{fig:result1}
+The goal of the function \textbf{build$\_$vocabulary.m} is to produce histograms of features and to group all features of all training images into 200 clusters. In order to produce histograms, I used the matlab function \textbf{extractHOGFeatures}. Then, I clustered them into vocab$\_$size groups by using K-mean clustering. I used the matlab function \textbf{kmeans} in order to do so. The code snippet is shown below: 
+\begin{lstlisting}[style=Matlab-editor]
+[N,~] = size(image_paths);
+bag_features = [];
+for i =1:N
+    image_path = image_paths{i};
+    img_features = [];
+    image = imread(image_path);
+    [hog,~] = extractHOGFeatures(image,'CellSize',[16 16]);
+    [~,hog_size] = size(hog);
+    num_blocks = hog_size / 36;
+    for b = 1:num_blocks
+        img_features = [img_features; hog(36*(b-1)+1:36*b)];
+    end
+    bag_features = [bag_features; img_features];
+end
+[~, vocab] = kmeans(bag_features, vocab_size);
+\end{lstlisting}
+The goal of the function \textbf{get$\_$bags$\_$of$\_$words.m} is to get the $vocab\_size \times D$ codebook matrix of codevectors produced by \textbf{build$\_$vocabulary.m} and determine how frequently each codevector occurs in the given image. This is done for all images in the image$\_$paths, and the function returns matrix of N images, each with d-dimensional feature representation vector. In this case, d is equal to the number of clusters, each with relative frequency of each codevector for the specific image. The code snippet is shown below:
+\begin{lstlisting}[style=Matlab-editor]
+load('vocab.mat')
+vocab_size = size(vocab, 1);
+[N,~] = size(image_paths);
+image_feats = zeros(N,vocab_size);
+for i =1:N
+    image_path = image_paths{i};
+    image = imread(image_path);
+    [hog,~] = extractHOGFeatures(image,'CellSize',[16 16]);
+    [~,hog_size] = size(hog);
+    num_blocks = hog_size / 36;
+    for b = 1:num_blocks
+        feature = hog(36*(b-1)+1:36*b);
+        dist = pdist2(vocab, feature);
+        [dist, ind] = sort(dist);
+        image_feats(i,ind(1)) = image_feats(i,ind(1)) + 1;
+    end
+    image_feats(i,:) = image_feats(i,:) ./ norm(image_feats(i,:));
+end
+\end{lstlisting}
+
+\subsection*{SVM}
+SVM, or supporting vector machine, is a linear classifier that determines whether a feature belongs to the positive side or the negative side. The goal of the function \textbf{svm$\_$classify.m} is to predict the label for an image given the training data and labels by using multiple binary SVMs. Since SVM is a binary classifier, and because there are 15 classifiers, I repeated the modeling 15 times by categorizing each into binary classifiers, or "forest" vs "non-forest", and "kitchen" vs "non-kitchen", for example. I used the Matlab function \textbf{fitcsvm} in order to obtain the SVM model for each classification. To predict the label for test image, I repeated the fit with 15 models for each classifier, and I determined the best label, or the label with highest fit. The code snippet for training is shown below:
+\begin{lstlisting}[style=Matlab-editor]
+for c = 1:num_categories
+    inds = zeros(N,1);
+    inds(:,:) = -1;
+    inds(strcmp(train_labels, categories{c})) = 1;
+    model = fitcsvm(train_image_feats, inds);
+    B = model.Bias;
+    W = (model.Beta)';
+    B_results = [B_results; B];
+    W_results = [W_results; W];
+end
+\end{lstlisting}
+The code snippet for testing is shown below:
+\begin{lstlisting}[style=Matlab-editor]
+for i = 1:M
+    best_label = zeros(num_categories,1);
+    for l = 1:num_categories
+        best_label(l) = dot(W_results(l,:), test_image_feats(i,:)) + B_results(l);
+    end
+    [best_label,ind] = sort(best_label, 'descend');
+    predicted_categories{i} = categories{ind(1)};
+end
+\end{lstlisting}
+
+\section*{Performance}
+As shown in Table 1, performance, or the accuracy, increases as new method is implemented. Bag of words method performs as a better feature representation of image than tiny image method does, and SVM method performs as a better classifier than nearest neighbor method does. Particularly, SVM produces better results in a faster time than nearest neighbor does.
+
+\begin{table}[!ht]
+	\begin{center}
+
+		\begin{tabular}{|c| c| c| c|}  
+			\hline
+			
+			Feature & Classifier & Accuracy & Time (in sec) \\ [0.5ex] 
+			\hline \hline
+			placeholder & placeholder  &0.067  & 2.516878  \\ 
+			\hline
+			tiny image & nearest neighbor  &0.221  & 31.013444  \\ 
+			\hline
+			bag of words & nearest neighbor  &0.491  & 180.424759 \\
+			\hline
+			bag of words & SVM  & 0.584 & 163.632035 \\
+			\hline
+		\end{tabular}
+		\caption{Performance metrics for different pipelines} \label{pos1}
+	\end{center}
+\end{table}
+As shown in the table, our best recognition setup was using "bag of words" feature representation and "SVM" classifier.
+
+\newpage
+\section*{Results}
+Using bag of words as feature descriptor representation and SVM as classifier produces the highest accuracy. Full confusion matrix and table of classification decisions are shown below.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\linewidth]{../results/bog_svm.png}
+	\caption{Full confusion map \\ Feature representation: bag of words, Classifier: SVM}
 \end{figure}
 
-My results are summarized in Table~\ref{tab:table1}.
-
-\begin{table}[h]
-    \centering
-    \begin{tabular}{lr}
-        \toprule
-        Condition & Time (seconds) \\
-        \midrule
-        Test 1 & 1 \\
-        Test 2 & 1000 \\
-        \bottomrule
-    \end{tabular}
-    \caption{Stunning revelation about the efficiency of my code.}
-    \label{tab:table1}
-\end{table}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\linewidth]{../results/table_bog_svm.png}
+	\caption{Table of classification decisions \\ Feature representation: bag of words, Classifier: SVM}
+\end{figure}
 
 \end{document}

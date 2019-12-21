@@ -35,6 +35,29 @@ function predicted_categories = svm_classify(train_image_feats, train_labels, te
 % 'categories' will not be in the same order as unique() sorts them. This shouldn't really matter, though.
 categories = unique(train_labels);
 num_categories = length(categories);
+[N,~] = size(train_image_feats);
+[M,~] = size(test_image_feats);
+predicted_categories = cell(M,1);
+B_results = [];
+W_results = [];
 
+for c = 1:num_categories
+    inds = zeros(N,1);
+    inds(:,:) = -1;
+    inds(strcmp(train_labels, categories{c})) = 1;
+    model = fitcsvm(train_image_feats, inds);
+    B = model.Bias;
+    W = (model.Beta)';
+    B_results = [B_results; B];
+    W_results = [W_results; W];
+end
 
-
+for i = 1:M
+    best_label = zeros(num_categories,1);
+    for l = 1:num_categories
+        best_label(l) = dot(W_results(l,:), test_image_feats(i,:)) + B_results(l);
+    end
+    [best_label,ind] = sort(best_label, 'descend');
+    predicted_categories{i} = categories{ind(1)};
+end
+end

@@ -1,5 +1,5 @@
 function projSceneRecBoW()
-
+tic;
 %For this project, you will need to report performance for three
 %combinations of features / classifiers. It is suggested you code them in
 %this order, as well:
@@ -54,8 +54,8 @@ function projSceneRecBoW()
 FEATURE = 'bag of words';
 % FEATURE = 'placeholder';
 
-CLASSIFIER = 'nearest neighbor';
-% CLASSIFIER = 'support vector machine';
+% CLASSIFIER = 'nearest neighbor';
+CLASSIFIER = 'support vector machine';
 % CLASSIFIER = 'placeholder';
 
 data_path = '../data/'; 
@@ -183,4 +183,5 @@ create_results_webpage( train_image_paths, ...
                         abbr_categories, ...
                         predicted_categories)
 
+toc
 end
